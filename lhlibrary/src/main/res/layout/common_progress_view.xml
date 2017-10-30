@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_loaddialog"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <!--   <ProgressBar
+           android:id="@+id/progressBar"
+           android:layout_width="30dp"
+           android:layout_height="30dp"
+           android:background="#00000000"
+           android:indeterminateDrawable="@drawable/progress_drawable"
+           android:indeterminateDuration="1200"
+           android:interpolator="@android:anim/accelerate_decelerate_interpolator" />
+   -->
+    <com.ldoublem.loadingviewlib.LVCircularCD
+        android:id="@+id/fuck_cd"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/id_tv_loadingmsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dip"
+        android:background="#00000000"
+        android:singleLine="true"
+        android:text="加载中..."
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+</LinearLayout>

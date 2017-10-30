@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="line0m">0.5dp</dimen>
+    <dimen name="line1">1dp</dimen>
+    <dimen name="line2">2dp</dimen>
+    <dimen name="line3">3dp</dimen>
+    <dimen name="line4">4dp</dimen>
+    <dimen name="line5">5dp</dimen>
+    <dimen name="line6">6dp</dimen>
+    <dimen name="line7">7dp</dimen>
+    <dimen name="line8">8dp</dimen>
+    <dimen name="line9">9dp</dimen>
+    <dimen name="line10">10dp</dimen>
+    <dimen name="line11">11dp</dimen>
+    <dimen name="line12">12dp</dimen>
+    <dimen name="line13">13dp</dimen>
+    <dimen name="line13m">13.5dp</dimen>
+    <dimen name="line14">14dp</dimen>
+    <dimen name="line15">15dp</dimen>
+    <dimen name="line16">16dp</dimen>
+    <dimen name="line17">17dp</dimen>
+    <dimen name="line20">20dp</dimen>
+    <dimen name="line18">18dp</dimen>
+    <dimen name="line21">21dp</dimen>
+    <dimen name="line24">24dp</dimen>
+    <dimen name="line27">27dp</dimen>
+    <dimen name="line36">36dp</dimen>
+    <dimen name="line66">66dp</dimen>
+    <dimen name="line120">120dp</dimen>
+
+    <dimen name="font10">10sp</dimen>
+    <dimen name="font11">11sp</dimen>
+    <dimen name="font12">12sp</dimen>
+    <dimen name="font13">13sp</dimen>
+    <dimen name="font13m">13.5sp</dimen>
+    <dimen name="font14">14sp</dimen>
+    <dimen name="font15">15sp</dimen>
+    <dimen name="font16">16sp</dimen>
+    <dimen name="font20">20sp</dimen>
+    <dimen name="font18">18sp</dimen>
+    <dimen name="line116">116dp</dimen>
+
+
+</resources>

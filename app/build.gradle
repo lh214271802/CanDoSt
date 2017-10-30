@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            // 设置支持的SO库
+            abiFilters 'armeabi', 'x86'//,'armeabi-v7a', 'x86_64', 'arm64-v8a','mips','mips64'
+        }
+    }
+
+    //签名文件配置
+    signingConfigs {
+        release {
+            storeFile file(KEYSTORE_FILE)
+            storePassword KEYSTORE_PWD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PWD
+        }
+    }
+
+    //打包以及混淆的配置
+    buildTypes {
+        debug {
+            //是否使用混淆
+            minifyEnabled false
+            //使用的混淆文件，可以使用多个混淆文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    //AndroidStudio升级问题:http://blog.csdn.net/iamzgx/article/details/72862509
+    flavorDimensions "army"
+
+    productFlavors {
+        baidu { dimension "army" }
+        tencent { dimension "army" }
+        _360 { dimension "army" }
+        xiaomi { dimension "army" }
+        huawei { dimension "army" }
+        wandoujia { dimension "army" }
+        yingyonghui { dimension "army" }
+        meizu { dimension "army" }
+        ppzhushou { dimension "army" }
+        vivo { dimension "army" }
+        le { dimension "army" }
+        viimoo { dimension "army" }
+        oppo { dimension "army" }
+        tianyi { dimension "army" }
+        yidongmm { dimension "army" }
+        woo { dimension "army" }
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (outputFileName.endsWith('.apk')) {
+                outputFileName = "ViiMoo_${variant.versionName}_${variant.productFlavors[0].name}.apk".toLowerCase()
+            }
+        }
+    }
+
+    //支持lint warning 检查机制
+    lintOptions {
+        disable 'InvalidPackage'
+        abortOnError false      // 移除lint检查的error
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    testApi 'junit:junit:4.12'
+    androidTestApi 'com.android.support.test:runner:1.0.1'
+    androidTestApi 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation project(':lhlibrary')
+}

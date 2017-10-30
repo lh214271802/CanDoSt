@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--更多数据的布局标签-->
+    <declare-styleable name="MoreViewStyle">
+        <attr name="drawable_left" format="integer|reference" />
+        <attr name="drawable_right" format="integer|reference" />
+        <attr name="text" format="string" />
+    </declare-styleable>
+    <!--正方形布局-->
+    <declare-styleable name="SquareLayout">
+        <attr name="oscAccordTo" format="integer">
+            <enum name="width" value="1" />
+            <enum name="height" value="2" />
+            <enum name="useMin" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <!--类似朋友圈的图片布局-->
+    <declare-styleable name="TweetPicturesLayout">
+        <attr name="verticalSpace" format="dimension" />
+        <attr name="horizontalSpace" format="dimension" />
+        <attr name="column" format="integer" />
+        <attr name="maxPictureSize" format="dimension" />
+    </declare-styleable>
+
+</resources>

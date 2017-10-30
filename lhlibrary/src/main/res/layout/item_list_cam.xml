@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.weilaimoshu.view.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="@dimen/line36"
+        android:layout_height="@dimen/line36"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name"
+        tools:src="@drawable/ic_camera" />
+</com.weilaimoshu.view.SquareLayout>

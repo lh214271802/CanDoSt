@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled true
+    }
+}
+
+dependencies {
+    api "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
+    api "com.android.support:support-v4:$rootProject.ext.supportVersion"
+    api "com.android.support:design:$rootProject.ext.supportVersion"
+    api "com.android.support:cardview-v7:$rootProject.ext.supportVersion"
+
+    //推送PUSH    https://github.com/pengyuantao/OnePush
+    api 'com.peng.library:one-push-core:1.0.4'
+    api 'com.peng.library:one-push-umeng:1.0.5'
+
+    //json文件快速实现动画效果    https://github.com/airbnb/lottie-android
+    //    api 'com.airbnb.android:lottie:2.2.5'
+    //热修复   https://github.com/Tencent/tinker
+    //SVG动画 https://github.com/jaredrummler/AnimatedSvgView
+    api 'com.jaredrummler:animated-svg-view:1.0.4'
+    //loading   https://github.com/ldoublem/LoadingView
+    api 'com.ldoublem.loadingview:loadingviewlib:1.0'
+    //流式布局  https://github.com/hongyangAndroid/FlowLayout
+    api 'com.hyman:flowlayout-lib:1.1.2'
+    //广告栏控件 https://github.com/youth5201314/banner
+    api 'com.youth.banner:banner:1.4.10'
+    //refresh   https://github.com/scwang90/SmartRefreshLayout
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    //refresh If you use the special Header
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+    //android utils     https://github.com/Blankj/AndroidUtilCode
+    api 'com.blankj:utilcode:1.9.0'
+    //ViewPager的导航条 http://www.jianshu.com/p/f630076d0935
+    //TODO https://github.com/LuckyJayce/ViewPagerIndicator#viewpagerindicator
+    api 'com.shizhefei:ViewPagerIndicator:1.1.6'
+    //adapter http://www.jianshu.com/p/b343fcff51b0 版本 https://github.com/CymChad/BaseRecyclerViewAdapterHelper/releases
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.29'
+    //如果需要悬浮粘性头部    https://github.com/Gavin-ZYX/StickyDecoration
+    //permission    https://github.com/googlesamples/easypermissions
+    api 'pub.devrel:easypermissions:1.0.0'
+    // Net      http://www.jianshu.com/p/dbc46cc033fb
+    api 'com.squareup.retrofit2:retrofit:2.1.0'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.0.1'
+    api 'com.squareup.retrofit2:converter-gson:2.1.0'
+    api 'com.squareup.okhttp3:okhttp:3.9.0'
+    // Rx   https://github.com/ReactiveX/RxAndroid
+    api 'io.reactivex:rxandroid:1.1.0'
+    api 'io.reactivex:rxjava:1.1.5'
+    api 'com.trello:rxlifecycle-components:0.6.1'
+    //方法数超65535限制
+    api 'com.android.support:multidex:1.0.1'
+    // Image    https://github.com/bumptech/glide
+    // http://blog.csdn.net/qq_19711823/article/details/51243918   http://www.jianshu.com/p/976c86fa72bc
+    api 'com.github.bumptech.glide:glide:3.7.0'
+    //glide关联okhttp3
+    api 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    // Annotation
+    api 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-apir:8.8.1'
+    // Bus                         https://github.com/greenrobot/EventBus
+    api 'org.greenrobot:eventbus:3.0.0'
+    //视频播放                      https://github.com/lipangit/JiaoZiVideoPlayer
+    api 'cn.jzvd:jiaozivideoplayer:6.0.1'
+    //视频播放器 https://github.com/CarGuo/GSYVideoPlayer
+    //轻量级弹幕    https://github.com/hpdx/DanmukuLight
+    //友盟统计
+    api 'com.umeng.analytics:analytics:latest.integration'
+    //数据库                          https://github.com/greenrobot/greenDAO
+    api 'org.greenrobot:greendao:3.2.2'
+    //腾讯对WebView的优化 https://github.com/Tencent/VasSonic/tree/master/sonic-android
+    api 'com.tencent.sonic:sdk:1.0.0'
+    /*
+
+        //微信支付与支付宝支付            https://github.com/mayubao/Android-Pay
+        api 'io.github.mayubao:pay_library:1.0.1'*/
+    //AndroidPicker                https://github.com/gzu-liyujiang/AndroidPicker
+    /*    api('cn.qqtheme.framework:WheelPicker:1.5.4') {
+            exclude group: 'com.android.support'
+        }*/
+    //字母索引
+    //    api 'com.bigkoo:quicksidebar:1.0.3'
+    api('cn.qqtheme.framework:FilePicker:1.5.1') {//文件选择
+        exclude group: 'com.android.support'
+    }
+    //友盟推送
+}

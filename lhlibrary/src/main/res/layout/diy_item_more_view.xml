@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/drawable_left"
+        android:layout_width="@dimen/line17"
+        android:layout_height="@dimen/line17"
+        android:layout_marginLeft="@dimen/line15"
+        android:layout_marginTop="@dimen/line11"
+        tools:src="@mipmap/crown" />
+
+    <TextView
+        android:id="@+id/more_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/line15"
+        android:layout_marginLeft="@dimen/line6"
+        android:layout_marginTop="@dimen/line12"
+        android:layout_toRightOf="@+id/drawable_left"
+        android:textColor="@color/gray5e"
+        android:textSize="@dimen/line14"
+        tools:text="热门偶像" />
+
+    <ImageView
+        android:id="@+id/drawable_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/line15"
+        android:layout_marginTop="@dimen/line15"
+        android:paddingLeft="@dimen/line3"
+        android:paddingRight="@dimen/line3"
+        tools:src="@mipmap/bg_more" />
+</RelativeLayout>
