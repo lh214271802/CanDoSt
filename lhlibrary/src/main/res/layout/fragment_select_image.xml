@@ -36,7 +36,7 @@
                 android:layout_gravity="right|center_vertical"
                 android:paddingRight="@dimen/line4"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_bottom_arrow" />
+                android:src="@mipmap/ic_arrow_bottom" />
 
             <Button
                 android:id="@+id/btn_title_select"

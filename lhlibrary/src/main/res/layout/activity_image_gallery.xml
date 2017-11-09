@@ -29,5 +29,5 @@
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:src="@drawable/ic_download" />
+        android:src="@mipmap/ic_download" />
 </RelativeLayout>

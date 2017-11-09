@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:state_selected="true">
-        <layer-list>
-            <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportHeight="1024.0" android:viewportWidth="1024.0">
-                <path android:fillColor="#fb9090" android:pathData="M788.2,381.1 L441.9,727.4c-6.8,6.8 -18.7,6.1 -26.5,-1.7l-23.2,-23.2c-0,-0 -0,-0 -0,-0L237,547.3c-7.8,-7.8 -7.8,-20.4 0,-28.2l42.3,-42.3c7.8,-7.8 20.4,-7.8 28.2,0l122,122 288.1,-288.1c6.8,-6.8 18.7,-6.1 26.5,1.7l42.3,42.3C794.2,362.4 795,374.2 788.2,381.1z" />
-                <path android:fillColor="#fb9090" android:pathData="M512,0.1C229.8,0.1 0,229.7 0,512.1c0,282.3 229.7,511.9 512,511.9 282.3,0 512,-229.6 512,-511.9S794.3,0.1 512,0.1L512,0.1zM512,959.9c-247,0 -447.9,-200.9 -447.9,-447.9C64.1,264.9 265,64.1 512,64.1c247,0 448,200.9 448,448C960,759 759,959.9 512,959.9L512,959.9z" />
-            </vector>
-        </layer-list>
-
-    </item>
-    <item android:state_selected="false">
-            <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportHeight="1024.0" android:viewportWidth="1024.0">
-                <path android:fillColor="#fb9090" android:pathData="M30.1,512c0,266.2 215.6,481.9 481.9,481.9s481.9,-215.6 481.9,-481.9S778.2,30.1 512,30.1 30.1,245.8 30.1,512zM90.4,512C90.4,279.2 279.2,90.4 512,90.4c232.8,0 421.6,188.8 421.6,421.6 0,232.8 -188.8,421.6 -421.6,421.6C279.2,933.6 90.4,744.8 90.4,512z" />
-            </vector>
-    </item>
+    <item android:drawable="@mipmap/ic_select_checked" android:state_selected="true" />
+    <item android:drawable="@mipmap/ic_select_def" android:state_selected="false" />
 </selector>

@@ -23,7 +23,7 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_no_data_icon" />
+            android:src="@mipmap/ic_no_data_icon" />
 
         <TextView
             android:id="@+id/tv_folder_name"

@@ -71,7 +71,7 @@ public class CommonWebAcitivity extends BaseActivity implements WebViewContract.
         BarUtils.addMarginTopEqualStatusBarHeight(mCommonToolbar);
         StatusBarUtil.StatusBarLightMode(this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
-        FragmentUtils.addFragment(getSupportFragmentManager(), CommonWebFragment.newInstance(getIntent().getStringExtra(WB_URL), true), R.id.container);
+        FragmentUtils.add(getSupportFragmentManager(), CommonWebFragment.newInstance(getIntent().getStringExtra(WB_URL), true), R.id.container);
     }
 
     @Override

@@ -13,5 +13,5 @@
         android:layout_height="@dimen/line36"
         android:layout_gravity="center"
         android:contentDescription="@string/app_name"
-        tools:src="@drawable/ic_camera" />
+        tools:src="@mipmap/ic_camera" />
 </com.lh.view.SquareLayout>

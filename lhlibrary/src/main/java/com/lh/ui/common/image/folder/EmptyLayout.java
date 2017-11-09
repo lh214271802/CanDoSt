@@ -148,7 +148,7 @@ public class EmptyLayout extends LinearLayout implements
                 // img.setBackgroundDrawable(SkinsUtil.getDrawable(context,"pagefailed_bg"));
                 if (NetworkUtils.isConnected()) {
                     tv.setText("内容加载失败\r\n点击重新加载");
-                    img.setBackgroundResource(R.drawable.ic_no_data_icon);
+                    img.setBackgroundResource(R.mipmap.ic_no_data_icon);
                 } else {
                     tv.setText("没有可用的网络");
                     img.setBackgroundResource(R.drawable.ic_network);
@@ -172,7 +172,7 @@ public class EmptyLayout extends LinearLayout implements
             case NODATA:
                 mErrorState = NODATA;
                 // img.setBackgroundDrawable(SkinsUtil.getDrawable(context,"page_icon_empty"));
-                img.setBackgroundResource(R.drawable.ic_no_data_icon);
+                img.setBackgroundResource(R.mipmap.ic_no_data_icon);
                 img.setVisibility(View.VISIBLE);
                 mLoading.setVisibility(View.GONE);
                 setTvNoDataContent();
@@ -183,7 +183,7 @@ public class EmptyLayout extends LinearLayout implements
                 break;
             case NODATA_ENABLE_CLICK:
                 mErrorState = NODATA_ENABLE_CLICK;
-                img.setBackgroundResource(R.drawable.ic_icon_empty);
+                img.setBackgroundResource(R.mipmap.ic_icon_empty);
                 // img.setBackgroundDrawable(SkinsUtil.getDrawable(context,"page_icon_empty"));
                 img.setVisibility(View.VISIBLE);
                 mLoading.setVisibility(View.GONE);

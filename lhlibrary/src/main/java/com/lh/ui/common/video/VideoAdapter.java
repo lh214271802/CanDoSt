@@ -46,7 +46,7 @@ public class VideoAdapter extends BaseMultiItemQuickAdapter<Video, MyBaseViewHol
     protected void convert(MyBaseViewHolder helper, Video item) {
         switch (helper.getItemViewType()) {
             case Video.TYPE_ONE:
-                helper.setImageResource(R.id.image_view, R.drawable.ic_list_take_photo);
+                helper.setImageResource(R.id.image_view, R.mipmap.ic_camera);
                 break;
             case Video.TYPE_TH:
                 if (item.getId() != 0) {

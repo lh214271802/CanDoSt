@@ -266,12 +266,12 @@ public class SelectVideoFragment extends BaseFragment implements OnClickListener
 
                 @Override
                 public void onDismiss() {
-                    mSelectFolderIcon.setImageResource(R.drawable.ic_bottom_arrow);
+                    mSelectFolderIcon.setImageResource(R.mipmap.ic_arrow_bottom);
                 }
 
                 @Override
                 public void onShow() {
-                    mSelectFolderIcon.setImageResource(R.drawable.ic_arrow_top);
+                    mSelectFolderIcon.setImageResource(R.mipmap.ic_arrow_top);
                 }
             });
             popupWindow.setAdapter(mVideoFolderAdapter);

@@ -46,7 +46,7 @@ public class ImageAdapter extends BaseMultiItemQuickAdapter<Image,MyBaseViewHold
     protected void convert(MyBaseViewHolder helper, Image item) {
         switch (helper.getItemViewType()) {
             case Image.TYPE_ONE:
-                helper.setImageResource(R.id.image_view,R.drawable.ic_list_take_photo);
+                helper.setImageResource(R.id.image_view,R.mipmap.ic_camera);
                 break;
             case Image.TYPE_TH:
                 if (item.getId() != 0) {

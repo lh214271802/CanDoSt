@@ -12,7 +12,7 @@
         android:id="@+id/img_error_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_no_data_icon"
+        android:background="@mipmap/ic_no_data_icon"
         android:visibility="gone"
         tools:visibility="visible" />
 
