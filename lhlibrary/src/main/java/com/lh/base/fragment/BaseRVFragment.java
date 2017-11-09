@@ -45,7 +45,9 @@ public abstract class BaseRVFragment<T> extends BaseRefreshFragment {
             mAdapter.setEmptyView(emptyLayoutId);
             //mAdapter.setLoadMoreView(loadMoreView);
         }
-        recyclerView.setAdapter(mAdapter);
+        if (recyclerView.getAdapter() == null) {
+            recyclerView.setAdapter(mAdapter);
+        }
     }
 
     /**

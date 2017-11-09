@@ -20,6 +20,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 public abstract class PermissionBaseActivity extends BaseActivity implements EasyPermissions.PermissionCallbacks {
 
     private PermissionBean[] needPermissions;
+    private int PERMISSIONREQUESTCODE = 0x1001;
     private int requestCode = -1;
 
     @Override
@@ -40,35 +41,32 @@ public abstract class PermissionBaseActivity extends BaseActivity implements Eas
     /**
      * 初始化阶段就需要获取的权限,getNeedPermissions()和applyForPermissions()方法中的参数不能同时为空
      */
-    protected PermissionBean[] getNeedPermissions() {
-        return null;
-    }
+    protected abstract PermissionBean[] getNeedPermissions();
 
     /**
      * 成功获取权限之后的操作
      */
-    protected void successGetPermissions(PermissionBean[] permissionBeans, int applyCode) {
-    }
+    protected abstract void successGetPermissions(PermissionBean[] permissionBeans, int applyCode);
 
     /**
      * 申请权限就直接调用此方法,getNeedPermissions()和applyForPermissions()方法中的参数不能同时为空
      * applyCode作为一个标志位，方便其他操作
      */
-    protected void applyForPermissions(PermissionBean[] permissions, int requestCode) {
+    protected void applyForPermissions(PermissionBean[] permissions, int applyCode) {
         requestForPermission(permissions);
-        this.requestCode = requestCode;
+        this.requestCode = applyCode;
         if (needPermissions != null && needPermissions.length > 0) {
             String[] persArray = new String[needPermissions.length];
             for (int i = 0; i < needPermissions.length; i++) {
                 persArray[i] = needPermissions[i].getPermissionName();
             }
             if (EasyPermissions.hasPermissions(this, persArray)) {
-                successGetPermissions(needPermissions, requestCode);
+                successGetPermissions(needPermissions, applyCode);
             } else {
                 if (needPermissions.length == 1) {//只申请一个权限的时候
                     EasyPermissions.requestPermissions(this, needPermissions[0].getRequestMessage(), needPermissions[0].getRequestCode(), needPermissions[0].getPermissionName());
                 } else {//同时申请多个权限的时候
-                    EasyPermissions.requestPermissions(this, "申请必要的权限", requestCode, persArray);
+                    EasyPermissions.requestPermissions(this, "申请必要的权限", PERMISSIONREQUESTCODE, persArray);
                 }
             }
         }
@@ -96,7 +94,26 @@ public abstract class PermissionBaseActivity extends BaseActivity implements Eas
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
         if (perms != null && perms.size() > 0) {
-            DialogHelper.getConfirmDialog(this, "", perms.size() == 1 ? needPermissions[0].getRequestFailMessage() : "未申请获得必要的权限", "去设置", "取消", false, new DialogInterface.OnClickListener() {
+            StringBuilder permissionApply = new StringBuilder();
+            if (perms.size() > 1) {
+                permissionApply.append("请求获取");
+                for (int i = 0; i < needPermissions.length; i++) {
+                    for (int j = 0; j < perms.size(); j++) {
+                        if (needPermissions[i].getPermissionName().equals(perms.get(j)) && !EasyPermissions.hasPermissions(mContext, perms.get(j))) {
+                            permissionApply.append(needPermissions[i].getRequestMessage().substring(4, needPermissions[i].getRequestMessage().length() - 2) + "、");
+                        }
+                    }
+                }
+                permissionApply.deleteCharAt(permissionApply.lastIndexOf("、"));
+                permissionApply.append("权限");
+            } else {
+                for (int i = 0; i < needPermissions.length; i++) {
+                    if (needPermissions[i].getPermissionName().equals(perms.get(0))) {
+                        permissionApply.append(needPermissions[i].getRequestFailMessage());
+                    }
+                }
+            }
+            DialogHelper.getConfirmDialog(this, "", permissionApply.toString(), "去设置", "取消", false, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     startActivity(new Intent(Settings.ACTION_APPLICATION_SETTINGS));
