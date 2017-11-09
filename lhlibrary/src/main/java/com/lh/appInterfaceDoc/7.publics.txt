@@ -1,0 +1,87 @@
+host: http://121.40.211.180
+status = SUCCESS//表示成功
+status = FAIL//失败，具体错误errorCode
+1.1搜索数量
+    http://xxx/publics/searchTypeNum
+    传参GET
+       keyword:搜索关键字 使用 AND 查询更精准 【需要url编码】
+    返回
+        data：{['type_id':,'type_name','total'],[]}
+    demo:http://121.40.211.180/publics/searchTypeNum?keyword=黄家驹
+1.2搜索
+    http://xxx/publics/search
+    传参GET
+       resources_type_id：资源类型id 【可不传非必须】
+       keyword:搜索关键字 使用 AND 查询更精准 【需要url编码】
+       page：页码
+       highlight：是否加亮【可不传非必须】匹配到的关键字会被加上<em>标签
+    返回
+        data：{[返回信息如列表详情],[]}
+    demo:http://121.40.211.180/publics/search?keyword=黄家驹
+
+2.获取最热门前几个搜索词
+    http://xxx/publics/getHotSearchWord
+    传参GET
+    返回
+        data：['','']
+3.首页推荐
+    http://xxx/publics/indexRecommend
+    传参GET
+    返回
+        data：{
+            'BANNER'：[{
+                title：标题,
+                desc:描素,
+                img:图片,
+                type:   1-资源ID；2-专题ID；3-偶像ID；4-URl地址
+                obj:    type=1为资源ID；type=2-专题ID；type=3-偶像ID；type=4-URl地址
+            }],
+            'HOT':[{idol_id:偶像id,head_img:头像图片,name:偶像名称}],
+            'FINE':[{
+                //第一个为三张图
+                title：标题
+                desc:描述
+                img:[图片数组]
+                pushtime：时间
+                type:   1-资源ID；2-专题ID；3-偶像ID；4-URl地址
+                obj:    type=1为资源ID；type=2-专题ID；type=3-偶像ID；type=4-URl地址
+                comment_totle：评论数
+                praise_totle：点赞数
+            }],
+            'SPECIAL':[{
+                title：标题
+                desc:描述
+                img:图片
+            }]
+        }
+4.获取分享链接
+  http://xxx/publics/getshareurl
+      传参GET
+      id:资源id，偶像id
+      type:1资源2专题3偶像
+      返回
+          data：{
+              url
+              title:资源名、偶像名
+              describe：资源简介，偶像简介
+              head_img:资源图片，偶像图片
+          }
+          errorcode:7041获取分享地址失败
+5.获取APP相关配置图
+  http://xxx/publics/getappimage
+      传参GET
+      pos:launchImage:启动图 useImage:设置中心图
+      返回
+          data：{image:{android:[url1,url2,],ios:[url1,url2,]}}
+          //pos不传是返回启动图+设置中心图
+          data:{launchImage:{android:[url1,url2,],ios:[url1,url2,]},useImage:[]}
+
+6.获取最新版本号
+  http://xxx/publics/getAppVersion
+      传参GET
+      返回
+7.推荐统计
+  http://xxx/publics/pageview
+      传参GET
+      push_index:
+      返回

@@ -1,0 +1,73 @@
+host: http://121.40.211.180
+status = SUCCESS//表示成功
+status = FAIL//失败，具体错误errorCode
+errorCode=1000 未登录或登录过期
+所有需要登录验证的接口（user,acresources模块）必须传authsign:登录后返回的认证密串
+关于用户头像及所有图片返回：有头像需要展示地方，在头像字段avatar后拼接&w=50&h=50 表示返回50x50图片，不指定h
+时候返回和w相同尺寸，默认返回100X100
+demo:
+http://121.40.211.180/image.php?file=/avatar/1/d9caa6e02c990b0a.png&t=1473409981&w=50
+1.注册
+    http://xxx/auth/register
+    传参GET
+        mobile:手机
+        password:密码，密文传送，先将密码base64，然后拼接上手机号再base64
+        ckpassword:确认密码 密文传送，先将密码base64，然后拼接上手机号再base64
+        code:验证码
+        device_token：[预留] 可空
+        invite：邀请码 可空
+    返回
+        data：{
+        }
+        errorCode:
+            1010:手机号有误
+            1011:密码不能为空
+            1012:验证码不能为空
+            1013:验证码错误或已失效
+            1014:手机号已经注册
+            1015:注册失败,请重试
+            1016:确认密码错误
+2.找回密码
+    http://xxx/auth/getpass
+    传参GET
+       mobile:手机号
+       code:手机验证码;测试默认4个1
+       password：登录密码， 密文传送，先将密码base64，然后拼接上手机号在base64
+   返回
+       errorCode:
+           1020:修改失败
+           1021:手机号有误
+           1022:找回密码超过今日限制,24小时后重试
+           1023:手机未注册
+           1024:验证码错误或已失效
+           1025：密码不能为空
+3.登录
+    http://xxx/auth/login
+    传参GET
+        from://0:手机 1:微博 2:微信 3:QQ
+        account: from=0：手机登录手机号码；from=1：weibo的uid;from=2:微信openid;from=3：qq的openid
+        toke:access_token 当from为1,2,3时候需要
+        password：登录密码，from=0时候需要 密文传送，先将密码base64，然后拼接上手机号在base64
+        device_token：[预留] 可空
+    返回
+        data：{
+        }
+        errorCode:
+            1001:手机未注册
+            1002:密码错误
+            1009:授权错误/校验错误
+            1003:登录失败
+            1004:账号不能为空
+4.获取验证码
+    http://xxx/auth/getcode
+    传参GET
+        mobile:手机号
+        code:1：注册验证码2：找回密码验证码
+    返回
+        data：{
+        }
+        errorCode:
+            1040:手机号有误
+            1041:发送失败
+            1042:手机号未注册(用于获取找回密码验证码)
+            1043:手机号已经注册(用于注册获取验证码)
