@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.weilaimoshu.ui.common.image.gallery.ImagePreviewView
+    <com.lh.ui.common.image.gallery.ImagePreviewView
         android:id="@+id/iv_preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

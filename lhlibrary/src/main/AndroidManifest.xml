@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.weilaimoshu">
+    package="com.lh">
 
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
@@ -55,42 +55,9 @@
 
         <!--Glide配置-->
         <meta-data
-            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+            android:name="com.lh.base.AppGlideModule"
             android:value="GlideModule" />
-
-        <!-- 友盟统计 TODO fuck-->
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="583e40706e27a43489000bee" />
-        <meta-data
-            android:name="UMENG_MESSAGE_SECRET"
-            android:value="7c0aeb6ec790b71afe53881179a93b0a" />
-
-        <!-- 多渠道打包统计配置 -->
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}" />
-        <!--Glide配置-->
-        <meta-data
-            android:name="com.weilaimoshu.base.AppGlideModule"
-            android:value="GlideModule" />
-        <!--Android7.0读写内存适配-->
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.weilaimoshu.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
-        </provider>
-
-        <!--如果引入了one-push-umeng库-->
-        <meta-data
-            android:name="OnePush_UMENG_103"
-            android:value="com.peng.one.push.umeng.UMengPushClient" />
-
-        <receiver android:name=".util.push.UMengPushReceiver">
+        <receiver android:name="com.lh.util.push.UMengPushReceiver">
             <intent-filter>
                 <action android:name="com.peng.one.push.ACTION_RECEIVE_NOTIFICATION" />
                 <action android:name="com.peng.one.push.ACTION_RECEIVE_NOTIFICATION_CLICK" />
@@ -100,23 +67,17 @@
         </receiver>
 
         <activity
-            android:name=".ui.common.web.CommonWebAcitivity"
+            android:name="com.lh.ui.common.web.CommonWebAcitivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.common.video.SelectVideoActivity"
+            android:name="com.lh.ui.common.video.SelectVideoActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.common.image.folder.SelectImageActivity"
+            android:name="com.lh.ui.common.image.folder.SelectImageActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".ui.common.image.ImageGalleryActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen" />
 
     </application>
 

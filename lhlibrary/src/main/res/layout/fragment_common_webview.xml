@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.weilaimoshu.view.progressweb.ProgressWebView
+    <com.lh.view.progressweb.ProgressWebView
         android:id="@+id/progress_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

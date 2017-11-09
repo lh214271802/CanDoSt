@@ -14,6 +14,29 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}" />
+        <!-- 友盟统计 TODO fuck-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="583e40706e27a43489000bee" />
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="7c0aeb6ec790b71afe53881179a93b0a" />
+
+        <!--Android7.0读写内存适配-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.lh.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <!--如果引入了one-push-umeng库-->
+        <meta-data
+            android:name="OnePush_UMENG_103"
+            android:value="com.peng.one.push.umeng.UMengPushClient" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

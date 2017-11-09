@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.weilaimoshu.view.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lh.view.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -46,4 +46,4 @@
         android:scaleType="fitXY"
         android:src="@drawable/ic_flag_gif"
         android:visibility="gone" />
-</com.weilaimoshu.view.SquareLayout>
+</com.lh.view.SquareLayout>

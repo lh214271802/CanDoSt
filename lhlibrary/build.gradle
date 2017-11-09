@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
@@ -65,7 +65,7 @@ dependencies {
     api 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     // Annotation
     api 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-apir:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     // Bus                         https://github.com/greenrobot/EventBus
     api 'org.greenrobot:eventbus:3.0.0'
     //视频播放                      https://github.com/lipangit/JiaoZiVideoPlayer

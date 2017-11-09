@@ -65,7 +65,7 @@
         android:layout_below="@+id/toolbar"
         android:orientation="vertical">
 
-        <com.weilaimoshu.ui.common.image.folder.EmptyLayout
+        <com.lh.ui.common.image.folder.EmptyLayout
             android:id="@+id/error_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
