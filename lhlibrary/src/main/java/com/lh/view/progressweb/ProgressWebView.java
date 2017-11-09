@@ -141,7 +141,7 @@ public class ProgressWebView extends LinearLayout {
             }
         });
 
-        sessionConfigBuilder.setConnectionIntercepter(new SonicSessionConnectionInterceptor() {
+        sessionConfigBuilder.setConnectionInterceptor(new SonicSessionConnectionInterceptor() {
             @Override
             public SonicSessionConnection getConnection(SonicSession session, Intent intent) {
                 return new OfflinePkgSessionConnection(mContext, session, intent);

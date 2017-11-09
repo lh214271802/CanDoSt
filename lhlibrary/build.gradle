@@ -59,7 +59,7 @@ dependencies {
     //方法数超65535限制
     api 'com.android.support:multidex:1.0.1'
     // Image    https://github.com/bumptech/glide
-    // http://blog.csdn.net/qq_19711823/article/details/51243918   http://www.jianshu.com/p/976c86fa72bc
+    // http://blog.csdn.net/qq_19711823/article/details/51243918   https://muyangmin.github.io/glide-docs-cn/doc/migrating.html
     api 'com.github.bumptech.glide:glide:3.7.0'
     //glide关联okhttp3
     api 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
@@ -67,28 +67,29 @@ dependencies {
     api 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     // Bus                         https://github.com/greenrobot/EventBus
-    api 'org.greenrobot:eventbus:3.0.0'
+    api 'org.greenrobot:eventbus:3.1.1'
     //视频播放                      https://github.com/lipangit/JiaoZiVideoPlayer
-    api 'cn.jzvd:jiaozivideoplayer:6.0.1'
+    api 'cn.jzvd:jiaozivideoplayer:6.1.2'
     //视频播放器 https://github.com/CarGuo/GSYVideoPlayer
     //轻量级弹幕    https://github.com/hpdx/DanmukuLight
+    api 'com.anbetter:danmukulight:1.0.1'
     //友盟统计
     api 'com.umeng.analytics:analytics:latest.integration'
     //数据库                          https://github.com/greenrobot/greenDAO
     api 'org.greenrobot:greendao:3.2.2'
     //腾讯对WebView的优化 https://github.com/Tencent/VasSonic/tree/master/sonic-android
-    api 'com.tencent.sonic:sdk:1.0.0'
+    api 'com.tencent.sonic:sdk:2.0.0-alpha'
     /*
 
         //微信支付与支付宝支付            https://github.com/mayubao/Android-Pay
         api 'io.github.mayubao:pay_library:1.0.1'*/
     //AndroidPicker                https://github.com/gzu-liyujiang/AndroidPicker
-    /*    api('cn.qqtheme.framework:WheelPicker:1.5.4') {
+    /*    api('cn.qqtheme.framework:WheelPicker:1.5.5') {
             exclude group: 'com.android.support'
         }*/
     //字母索引
     //    api 'com.bigkoo:quicksidebar:1.0.3'
-    api('cn.qqtheme.framework:FilePicker:1.5.1') {//文件选择
+    api('cn.qqtheme.framework:FilePicker:1.5.5') {//文件选择
         exclude group: 'com.android.support'
     }
     //友盟推送
