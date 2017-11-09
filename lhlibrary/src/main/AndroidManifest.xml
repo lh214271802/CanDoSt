@@ -84,6 +84,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
 
+        <service android:name=".api.upload.UploadService" />
     </application>
 
 </manifest>

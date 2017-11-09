@@ -2,12 +2,17 @@ package com.lh.api;
 
 import com.lh.base.BaseBean;
 
+import java.util.Map;
+
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PartMap;
+import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 import rx.Observable;
@@ -27,4 +32,14 @@ public interface AppApiService {
 
     @POST("fuck")
     Observable<BaseBean> uploadFile(@Body RequestBody body);
+
+    /**
+     * 文件上传
+     */
+
+    @POST("upload")
+    @Multipart
+    Observable<ResponseBody> uploadFileInfo(@QueryMap Map<String, String> options,
+                                            @PartMap Map<String, RequestBody> externalFileParameters);
+
 }
