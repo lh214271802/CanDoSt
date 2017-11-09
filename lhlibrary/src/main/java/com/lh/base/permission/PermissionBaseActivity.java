@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.lh.base.activity.BaseActivity;
 import com.lh.util.DialogHelper;
 
