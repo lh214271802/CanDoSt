@@ -1,9 +1,8 @@
 package com.lh.base.permission;
 
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.provider.Settings;
 
+import com.blankj.utilcode.util.IntentUtils;
 import com.lh.base.activity.BaseActivity;
 import com.lh.util.DialogHelper;
 
@@ -90,7 +89,7 @@ public abstract class PermissionBaseActivity extends BaseActivity implements Eas
             DialogHelper.getConfirmDialog(this, "", requestMessage.toString(), "去设置", "取消", false, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    startActivity(new Intent(Settings.ACTION_APPLICATION_SETTINGS));
+                    startActivity(IntentUtils.getAppDetailsSettingsIntent(getPackageName()));
                     callBack.onFail(true);
                 }
             }, new DialogInterface.OnClickListener() {
