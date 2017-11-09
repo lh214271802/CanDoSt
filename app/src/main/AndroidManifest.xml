@@ -3,13 +3,13 @@
     package="cn.lh.candost">
 
     <application
-         android:name="com.lh.FrameApplication"
+        android:name="com.lh.FrameApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
 
         <!-- 多渠道打包统计配置 -->
         <meta-data

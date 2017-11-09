@@ -218,7 +218,7 @@ public class ShareUtils {
     public static void defaultShareImage(String shareImageUrl, Context context, int scene) {
         try {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            Uri uri = FileProvider.getUriForFile(context, "com.weilaimoshu.provider", new File(shareImageUrl));
+            Uri uri = FileProvider.getUriForFile(context, "com.lh.provider", new File(shareImageUrl));
             shareIntent.setType("image/*");
             shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
             shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

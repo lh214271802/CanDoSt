@@ -78,6 +78,11 @@
             android:name="com.lh.ui.common.image.folder.SelectImageActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.lh.ui.common.image.gallery.ImageGalleryActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen" />
 
     </application>
 

@@ -325,7 +325,7 @@ public class SelectFragment extends BaseFragment implements SelectImageContract.
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         Uri uri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            uri = FileProvider.getUriForFile(getContext(), "net.weilaimoshu.provider", out);
+            uri = FileProvider.getUriForFile(getContext(), "com.lh.provider", out);
         } else {
             uri = Uri.fromFile(out);
         }
