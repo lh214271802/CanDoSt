@@ -54,31 +54,38 @@ public class SelectImageActivity extends PermissionBaseActivity implements Selec
 
     @Override
     public void requestCamera() {
-        applyForPermissions(new PermissionBean[]{PermissionBean.CAMERA}, PermissionBean.CAMERA.getRequestCode());
+        requestForPermissions(new PermissionBean[]{PermissionBean.CAMERA}, PermissionBean.CAMERA.getRequestCode(), new RequestPermissionsCallBack() {
+            @Override
+            public void onSuccess() {
+                if (mView != null) {
+                    mView.onOpenCameraSuccess();
+                }
+            }
+
+            @Override
+            public void onFail(boolean isGoSetting) {
+                finish();
+            }
+        });
     }
 
     @Override
     public void requestExternalStorage() {
-        applyForPermissions(new PermissionBean[]{PermissionBean.WSTORAGE}, PermissionBean.WSTORAGE.getRequestCode());
+        requestForPermissions(new PermissionBean[]{PermissionBean.WSTORAGE}, PermissionBean.WSTORAGE.getRequestCode(), new RequestPermissionsCallBack() {
+            @Override
+            public void onSuccess() {
+                if (mView == null) {
+                    handleView();
+                }
+            }
+
+            @Override
+            public void onFail(boolean isGoSetting) {
+                finish();
+            }
+        });
     }
 
-    @Override
-    protected PermissionBean[] getNeedPermissions() {
-        return null;
-    }
-
-    @Override
-    protected void successGetPermissions(PermissionBean[] permissionBeans, int applyCode) {
-        if (applyCode == PermissionBean.CAMERA.getRequestCode()) {
-            if (mView != null) {
-                mView.onOpenCameraSuccess();
-            }
-        } else if (applyCode == PermissionBean.WSTORAGE.getRequestCode()) {
-            if (mView == null) {
-                handleView();
-            }
-        }
-    }
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {

@@ -117,6 +117,6 @@ public final class SelectOptions implements Serializable {
     }
 
     public interface Callback {
-        void doSelected(List<String> videos);
+        void doSelected(List<String> images);
     }
 }

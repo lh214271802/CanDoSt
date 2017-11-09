@@ -90,21 +90,21 @@ public class ImageGalleryActivity extends PermissionBaseActivity implements View
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.iv_save) {
-            applyForPermissions(null, 1112);
+            requestForPermissions(new PermissionBean[]{PermissionBean.WSTORAGE}, PermissionBean.WSTORAGE.getRequestCode(), new RequestPermissionsCallBack() {
+                @Override
+                public void onSuccess() {
+                    saveCurrentPicture();
+                }
+
+                @Override
+                public void onFail(boolean isGoSetting) {
+                    finish();
+                }
+            });
 
         }
     }
-
-    @Override
-    protected PermissionBean[] getNeedPermissions() {
-        return new PermissionBean[]{PermissionBean.WSTORAGE};
-    }
-
-    @Override
-    protected void successGetPermissions(PermissionBean[] permissionBeans, int applyCode) {
-        saveCurrentPicture();
-    }
-
+    
     /**
      * 下载保存当前图片
      */
