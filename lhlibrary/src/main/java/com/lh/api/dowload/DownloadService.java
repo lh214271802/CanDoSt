@@ -176,6 +176,7 @@ public class DownloadService extends IntentService {
             PendingIntent pIntent = PendingIntent.getService(DownloadService.this, 1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             notificationBuilder.setContentIntent(pIntent);
             SharedPreferencesUtil.getInstance().putString(APP_APK_PATH, outputFile.getAbsolutePath());
+            //TODO FUCK
             AppUtils.installApp(outputFile, "com.weilaimoshu.provider");
 
         }
