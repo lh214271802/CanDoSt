@@ -2,7 +2,6 @@ package com.lh.base;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleRes;
@@ -10,9 +9,9 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.ldoublem.loadingviewlib.LVCircularCD;
 import com.lh.R;
 
 
@@ -23,7 +22,8 @@ import com.lh.R;
 public class CommonDialog extends Dialog {
 
     private static String loadText;
-    private LVCircularCD fuckCD;
+    private ProgressBar progressBar;
+//    private LVCircularCD fuckCD;
     private TextView loadingMsg;
 
     public CommonDialog(@NonNull Context context) {
@@ -54,20 +54,21 @@ public class CommonDialog extends Dialog {
     public void show() {
         super.show();
         loadingMsg = (TextView) this.findViewById(R.id.id_tv_loadingmsg);
-        fuckCD = (LVCircularCD) this.findViewById(R.id.fuck_cd);
-        fuckCD.setViewColor(Color.parseColor("#ff0000"));
+//        fuckCD = (LVCircularCD) this.findViewById(R.id.fuck_cd);
+//        progressBar = (ProgressBar) this.findViewById(R.id.progress_bar);
+//        fuckCD.setViewColor(Color.parseColor("#ff0000"));
         loadingMsg.setText(loadText);
-        if (fuckCD != null) {
-            fuckCD.startAnim();
-        }
+//        if (fuckCD != null) {
+//            fuckCD.startAnim();
+//        }
     }
 
     @Override
     public void dismiss() {
         super.dismiss();
-        if (fuckCD != null) {
-            fuckCD.stopAnim();
-        }
+//        if (fuckCD != null) {
+//            fuckCD.stopAnim();
+//        }
     }
 
     @Override

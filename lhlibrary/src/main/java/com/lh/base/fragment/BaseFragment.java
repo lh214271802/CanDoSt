@@ -83,7 +83,7 @@ public abstract class BaseFragment extends RxFragment implements BaseContract.Ba
 
     @Override
     public void goLogin() {
-        BaseUtils.clearLoginInfo(true);
+        BaseUtils.clearLoginInfo(mContext,true);
     }
 
     @Override

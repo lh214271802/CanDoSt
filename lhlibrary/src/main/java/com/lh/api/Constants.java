@@ -13,7 +13,7 @@ public class Constants {
     /**
      * 缓存地址
      */
-    public static String PATH_CACHE = FrameApplication.getInstance().getCacheDir().getAbsolutePath() + File.separator + "weilaimoshu";
-    public static String APP_NAME = "weilaimoshu";
+    public static String PATH_CACHE = FrameApplication.getInstance().getCacheDir().getAbsolutePath() + File.separator + "lh";
+    public static String APP_NAME = "lh";
 
 }

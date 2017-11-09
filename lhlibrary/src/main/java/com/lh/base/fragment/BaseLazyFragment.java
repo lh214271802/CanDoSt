@@ -81,7 +81,7 @@ public abstract class BaseLazyFragment extends LazyFragment implements FragmentL
 
     @Override
     public void goLogin() {
-        BaseUtils.clearLoginInfo(true);
+        BaseUtils.clearLoginInfo(mContext, true);
     }
 
     @Override

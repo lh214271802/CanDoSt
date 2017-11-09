@@ -85,7 +85,7 @@ public abstract class BaseActivity extends RxAppCompatActivity implements BaseCo
 
     @Override
     public void goLogin() {
-        BaseUtils.clearLoginInfo(true);
+        BaseUtils.clearLoginInfo(mContext,true);
     }
 
     @Override

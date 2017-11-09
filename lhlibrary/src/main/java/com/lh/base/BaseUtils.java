@@ -34,7 +34,11 @@ public class BaseUtils {
     /**
      * 清除用户信息
      */
-    public static void clearLoginInfo(boolean toLogin) {
+    public static void clearLoginInfo(Context context,boolean toLogin) {
+        SharedPreferencesUtil.getInstance().remove("UserInfo");
+        if (toLogin) {//TODO tologin
+//            context.startActivity(new Intent(context,LoginAcitivity.class));
+        }
     }
 
     /**
@@ -106,7 +110,7 @@ public class BaseUtils {
         if (errorHolder != 0) {
             drawableRequestBuilder.error(errorHolder);
         }
-        drawableRequestBuilder.transform(new RoundedCornersTransformation(mContext,radius,0, RoundedCornersTransformation.CornerType.ALL));
+        drawableRequestBuilder.transform(new RoundedCornersTransformation(mContext, radius, 0, RoundedCornersTransformation.CornerType.ALL));
         drawableRequestBuilder
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);

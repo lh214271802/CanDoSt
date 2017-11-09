@@ -1,29 +1,38 @@
 package cn.lh.candost;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
 
-import com.lh.ui.common.image.folder.SelectImageActivity;
-import com.lh.ui.common.image.folder.SelectOptions;
+import com.lh.base.activity.BaseActivity;
 
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        SelectImageActivity.show(this,
-                new SelectOptions.Builder()
-                        .setHasCam(true)
-                        .setSelectCount(4)
-                        .setCallback(new SelectOptions.Callback() {
-                            @Override
-                            public void doSelected(List<String> videos) {
+    protected View getToolbarLayout() {
+        return null;
+    }
 
-                            }
-                        })
-                        .build());
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initViews() {
+        showProgress(true);
+    }
+
+    @Override
+    protected void initDatas() {
+//        SelectImageActivity.show(this,
+//                new SelectOptions.Builder()
+//                        .setHasCam(true)
+//                        .setSelectCount(4)
+//                        .setCallback(new SelectOptions.Callback() {
+//                            @Override
+//                            public void doSelected(List<String> videos) {
+//
+//                            }
+//                        })
+//                        .build());
     }
 }
