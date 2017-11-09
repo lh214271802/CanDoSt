@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.lh.base.activity.BaseActivity;
 import com.lh.util.DialogHelper;
 
@@ -51,6 +52,7 @@ public abstract class PermissionBaseActivity extends BaseActivity implements Eas
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         //把申请权限的回调交由EasyPermissions处理
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
@@ -75,7 +77,7 @@ public abstract class PermissionBaseActivity extends BaseActivity implements Eas
             requestMessage.append("请求获取");
             for (int i = 0; i < perms.size(); i++) {
                 for (int j = 0; j < needPermissions.length; j++) {
-                    if (perms.get(i) == needPermissions[j].getPermissionName()) {
+                    if (needPermissions[j].getPermissionName().equals(perms.get(i))) {
                         requestMessage.append(needPermissions[j].getRequestMessage() + "、");
                     }
                 }
@@ -83,8 +85,8 @@ public abstract class PermissionBaseActivity extends BaseActivity implements Eas
             if (requestMessage.indexOf("、") != -1) {
                 requestMessage.deleteCharAt(requestMessage.lastIndexOf("、"));
                 requestMessage.append("权限");
-            }else {
-;                requestMessage.append("必要的权限");
+            } else {
+                requestMessage.append("必要的权限");
             }
             DialogHelper.getConfirmDialog(this, "", requestMessage.toString(), "去设置", "取消", false, new DialogInterface.OnClickListener() {
                 @Override
