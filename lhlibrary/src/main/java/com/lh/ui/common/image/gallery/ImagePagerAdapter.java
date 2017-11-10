@@ -48,39 +48,32 @@ public class ImagePagerAdapter extends PagerAdapter {
                 .inflate(R.layout.image_gallery_page, null);
         ImagePreviewView imageView = (ImagePreviewView) view.findViewById(R.id.iv_preview);
         final ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
-        if (imageSources.get(position).trim().toLowerCase().endsWith("gif")) {
-            Glide.with(mContext)
-                    .load(imageSources.get(position))
-                    .asGif()
-                    .into(imageView);
-        } else {
-            Glide.with(mContext)
-                    .load(imageSources.get(position))
+        Glide.with(mContext)
+                .load(imageSources.get(position))
 //                .dontAnimate()
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                    .animate(R.anim.alpha_toshow)// PICTURE
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .animate(R.anim.alpha_toshow)// PICTURE
 //                .placeholder(R.color.gray_ba)
-                    .fitCenter()
-                    .into(new GlideDrawableImageViewTarget(imageView) {
-                        @Override
-                        public void onLoadStarted(Drawable placeholder) {
-                            super.onLoadStarted(placeholder);
-                            progressBar.setVisibility(View.VISIBLE);
-                        }
+                .fitCenter()
+                .into(new GlideDrawableImageViewTarget(imageView) {
+                    @Override
+                    public void onLoadStarted(Drawable placeholder) {
+                        super.onLoadStarted(placeholder);
+                        progressBar.setVisibility(View.VISIBLE);
+                    }
 
-                        @Override
-                        public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                            super.onLoadFailed(e, errorDrawable);
-                            progressBar.setVisibility(View.GONE);
-                        }
+                    @Override
+                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                        super.onLoadFailed(e, errorDrawable);
+                        progressBar.setVisibility(View.GONE);
+                    }
 
-                        @Override
-                        public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
-                            super.onResourceReady(resource, animation);
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    });
-        }
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
+                        super.onResourceReady(resource, animation);
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
