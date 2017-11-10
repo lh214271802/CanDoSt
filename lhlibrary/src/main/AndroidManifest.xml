@@ -83,6 +83,10 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
+        <activity
+            android:name=".ui.common.crop.CropActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
 
         <service android:name=".api.upload.UploadService" />
     </application>

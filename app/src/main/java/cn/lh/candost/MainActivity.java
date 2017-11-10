@@ -1,14 +1,17 @@
 package cn.lh.candost;
 
 import android.view.View;
+import android.widget.ImageView;
 
 import com.lh.base.activity.BaseActivity;
-import com.lh.ui.common.image.folder.SelectImageActivity;
 import com.lh.ui.common.image.folder.SelectOptions;
+import com.lh.ui.common.video.SelectVideoActivity;
 
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
+
+    private ImageView imageView;
 
     @Override
     protected View getToolbarLayout() {
@@ -25,19 +28,30 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.hello_world).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SelectImageActivity.show(mContext,
-                        new SelectOptions.Builder()
-                                .setHasCam(true)
-                                .setSelectCount(4)
-                                .setCallback(new SelectOptions.Callback() {
-                                    @Override
-                                    public void doSelected(List<String> videos) {
+//                SelectImageActivity.show(mContext,
+//                        new SelectOptions.Builder()
+//                                .setHasCam(true)
+//                                .setSelectCount(1)
+//                                .setCrop(720, 720)
+//                                .setCallback(new SelectOptions.Callback() {
+//                                    @Override
+//                                    public void doSelected(List<String> videos) {
+//                                        Glide.with(mContext).load(videos.get(0)).into(imageView);
+//                                    }
+//                                })
+//                                .build());
+                SelectVideoActivity.startActivity(mContext,new SelectOptions.Builder()
+                .setCallback(new SelectOptions.Callback() {
+                    @Override
+                    public void doSelected(List<String> images) {
 
-                                    }
-                                })
-                                .build());
+                    }
+                })
+                        .setHasCam(true)
+                        .setSelectCount(5).build());
             }
         });
+        imageView = findViewById(R.id.image_view);
     }
 
     @Override

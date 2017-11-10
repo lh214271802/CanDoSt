@@ -15,7 +15,7 @@ import com.lh.R;
 
 
 /**
- * 图片选择器菜单选择界面
+ * 视频选择器菜单选择界面
  */
 public class VideoFolderPopupWindow extends PopupWindow implements
         View.OnAttachStateChangeListener, BaseQuickAdapter.OnItemClickListener {

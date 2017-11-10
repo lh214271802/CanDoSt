@@ -1,9 +1,9 @@
 package com.lh.ui.common.image.gallery;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +77,7 @@ public class ImagePagerAdapter extends PagerAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AppCompatActivity) mContext).finish();
+                ((Activity) mContext).finish();
             }
         });
         container.addView(view);

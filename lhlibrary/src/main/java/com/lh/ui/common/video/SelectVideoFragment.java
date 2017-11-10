@@ -39,10 +39,6 @@ import java.util.List;
  */
 public class SelectVideoFragment extends BaseFragment implements OnClickListener, ImageLoaderListener, BaseQuickAdapter.OnItemClickListener, SelectVideoContract.View {
 
-    private static final int RC_CAMERA_PERM = 0x03;
-    private static final int RC_EXTERNAL_STORAGE = 0x04;
-
-
     RecyclerView mContentView;
     Button mSelectFolderView;
     ImageView mSelectFolderIcon;
@@ -192,7 +188,7 @@ public class SelectVideoFragment extends BaseFragment implements OnClickListener
                 mVideoAdapter.updateItem(position);
             } else {
                 if (mSelectedVideo.size() == selectCount) {
-                    Toast.makeText(getActivity(), "最多只能选择 " + selectCount + " 张照片", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "最多只能选择 " + selectCount + " 部视频", Toast.LENGTH_SHORT).show();
                 } else {
                     image.setSelect(true);
                     mSelectedVideo.add(image);

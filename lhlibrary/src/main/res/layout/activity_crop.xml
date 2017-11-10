@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.lh.ui.common.image.crop.CropLayout
+    <com.lh.ui.common.crop.CropLayout
         android:id="@+id/cropLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
