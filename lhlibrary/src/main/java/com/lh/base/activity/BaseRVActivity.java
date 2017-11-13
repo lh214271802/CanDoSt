@@ -34,13 +34,14 @@ public abstract class BaseRVActivity<T> extends BaseRefreshActivity implements O
      * 初始化当前页面RecyclerView及其数据
      */
     protected void initRecyclerView() {
-        initRecyclerView(new LinearLayoutManager(mContext), R.layout.common_empty_layout);
+        initRecyclerView(new LinearLayoutManager(mContext), new DividerDecoration(ContextCompat.getColor(mContext, R.color.whiteDF), 1, 0, 0), R.layout.common_empty_layout);
     }
 
-    protected void initRecyclerView(RecyclerView.LayoutManager manager, int emptyLayoutId) {
+
+    protected void initRecyclerView(RecyclerView.LayoutManager manager, RecyclerView.ItemDecoration decoration, int emptyLayoutId) {
         recyclerView.setLayoutManager(manager);
-        if (manager instanceof LinearLayoutManager) {
-            recyclerView.addItemDecoration(new DividerDecoration(ContextCompat.getColor(mContext, R.color.whiteDF), 1, 0, 0));
+        if (decoration!=null) {
+            recyclerView.addItemDecoration(decoration);
         }
         if (mAdapter == null) {
             mAdapter = getRvAdatper();
