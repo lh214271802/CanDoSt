@@ -5,30 +5,32 @@ import android.os.Bundle;
 import android.support.annotation.CheckResult;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.shizhefei.fragment.LazyFragment;
-import com.trello.rxlifecycle.FragmentEvent;
-import com.trello.rxlifecycle.FragmentLifecycleProvider;
-import com.trello.rxlifecycle.LifecycleTransformer;
-import com.trello.rxlifecycle.RxLifecycle;
+
 import com.lh.base.BaseContract;
 import com.lh.base.BaseUtils;
 import com.lh.base.CommonDialog;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.RxLifecycle;
+import com.trello.rxlifecycle2.android.FragmentEvent;
+import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import rx.Observable;
-import rx.subjects.BehaviorSubject;
+import io.reactivex.Observable;
 
 /**
  * Created by liaohui on 2017/9/29.
  */
 
-public abstract class BaseLazyFragment extends LazyFragment implements FragmentLifecycleProvider, BaseContract.BaseView {
-    private final BehaviorSubject<FragmentEvent> lifecycleSubject = BehaviorSubject.create();
+public abstract class BaseLazyFragment extends LazyFragment implements LifecycleProvider<FragmentEvent>, BaseContract.BaseView {
+    private final io.reactivex.subjects.BehaviorSubject<FragmentEvent> lifecycleSubject = io.reactivex.subjects.BehaviorSubject.create();
 
     protected Context mContext;
     protected FragmentActivity activity;
@@ -98,12 +100,14 @@ public abstract class BaseLazyFragment extends LazyFragment implements FragmentL
 
     }
 
+
     @Override
     @NonNull
     @CheckResult
     public final Observable<FragmentEvent> lifecycle() {
-        return lifecycleSubject.asObservable();
+        return lifecycleSubject.hide();
     }
+
 
     @Override
     @NonNull
@@ -116,15 +120,13 @@ public abstract class BaseLazyFragment extends LazyFragment implements FragmentL
     @NonNull
     @CheckResult
     public final <T> LifecycleTransformer<T> bindToLifecycle() {
-        return RxLifecycle.bindFragment(lifecycleSubject);
+        return RxLifecycleAndroid.bindFragment(lifecycleSubject);
     }
-
     @Override
     public void onAttach(android.app.Activity activity) {
         super.onAttach(activity);
         lifecycleSubject.onNext(FragmentEvent.ATTACH);
     }
-
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.trello.rxlifecycle.components.support.RxFragment;
 import com.lh.base.BaseContract;
 import com.lh.base.BaseUtils;
 import com.lh.base.CommonDialog;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import java.lang.reflect.Field;
 

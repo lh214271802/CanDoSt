@@ -16,8 +16,8 @@
 package com.lh.base;
 
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by lfh on 2016/9/11.
@@ -29,17 +29,17 @@ import rx.subscriptions.CompositeSubscription;
 public class RxPresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {
 
     protected T mView;
-    protected CompositeSubscription mCompositeSubscription;
+    protected CompositeDisposable mCompositeSubscription;
 
     protected void unSubscribe() {
         if (mCompositeSubscription != null) {
-            mCompositeSubscription.unsubscribe();
+            mCompositeSubscription.dispose();
         }
     }
 
-    protected void addSubscrebe(Subscription subscription) {
+    protected void addSubscrebe(Disposable subscription) {
         if (mCompositeSubscription == null) {
-            mCompositeSubscription = new CompositeSubscription();
+            mCompositeSubscription = new CompositeDisposable();
         }
         mCompositeSubscription.add(subscription);
     }

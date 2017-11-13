@@ -21,7 +21,9 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 
-import rx.Subscriber;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 
 
 /**
@@ -119,13 +121,7 @@ public class DownloadService extends IntentService {
                 }
             };
             if (FileUtils.createFileByDeleteOldFile(outputFile)) {
-                new DownloadAPI(listener).downloadAPK(apkUrl, outputFile, new Subscriber() {
-                    @Override
-                    public void onCompleted() {
-                        downLoadSuccess = true;
-                        downloadCompleted();
-
-                    }
+                new DownloadAPI(listener).downloadAPK(apkUrl, outputFile, new Observer() {
 
                     @Override
                     public void onError(Throwable e) {
@@ -133,6 +129,17 @@ public class DownloadService extends IntentService {
                         downLoadSuccess = false;
                         downloadCompleted();
                         LogUtils.e(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        downLoadSuccess = true;
+                        downloadCompleted();
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override

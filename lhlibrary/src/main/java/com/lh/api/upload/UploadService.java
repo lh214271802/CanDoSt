@@ -18,18 +18,19 @@ import com.lh.api.dowload.DownloadService;
 import com.lh.api.dowload.SizeFormatUtils;
 
 import org.greenrobot.eventbus.EventBus;
+import org.reactivestreams.Subscription;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by liaohui on 2017/11/9.
@@ -46,7 +47,7 @@ public class UploadService extends IntentService {
     private static String serviceText = "";//通知栏小标题
     private static Map<String, String> upParams;//上传的参数
     private static String upFile;//上传的文件
-    private Subscription subscription;
+    private Disposable subscription;
 
     public UploadService(String name) {
         super("upload");
@@ -89,7 +90,7 @@ public class UploadService extends IntentService {
             @Override
             public void onProgress(long hasWrittenLen, long totalLen, boolean hasFinish) {
                 sendIntent(new UploadBean(hasWrittenLen, totalLen, hasFinish));
-                notificationBuilder.setProgress(100, (int)(hasWrittenLen / totalLen), false);
+                notificationBuilder.setProgress(100, (int) (hasWrittenLen / totalLen), false);
                 notificationBuilder.setContentText(
                         SizeFormatUtils.getDataSize(hasWrittenLen) + "/" +
                                 SizeFormatUtils.getDataSize(totalLen));
@@ -97,17 +98,24 @@ public class UploadService extends IntentService {
             }
         });
         requestBodyMap.put("file\"; filename=\"" + upFile.substring(upFile.lastIndexOf(File.separator)), fileRequestBody);
-        subscription = AppApi.getApiService().uploadFileInfo(upParams, requestBodyMap)
+        AppApi.getApiService().uploadFileInfo(upParams, requestBodyMap)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ResponseBody>() {
-                    @Override
-                    public void onCompleted() {
-                    }
+                .subscribe(new Observer<ResponseBody>() {
 
                     @Override
                     public void onError(Throwable e) {
                         LogUtils.e(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        subscription = d;
                     }
 
                     @Override
@@ -124,7 +132,7 @@ public class UploadService extends IntentService {
     @Override
     public void onDestroy() {
         if (subscription != null) {
-            subscription.unsubscribe();
+            subscription.dispose();
         }
         super.onDestroy();
     }

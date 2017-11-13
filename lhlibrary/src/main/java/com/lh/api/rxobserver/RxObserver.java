@@ -18,10 +18,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.net.ConnectException;
 
+import io.reactivex.Observer;
 import okhttp3.internal.connection.RouteException;
 import okhttp3.internal.http2.ConnectionShutdownException;
-import retrofit2.adapter.rxjava.HttpException;
-import rx.Observer;
+import retrofit2.HttpException;
+
 
 /**
  * Created by liaohui on 2017/9/20.
@@ -53,7 +54,7 @@ public abstract class RxObserver<T> implements Observer<T> {
     }
 
     @Override
-    public void onCompleted() {
+    public void onComplete() {
         handleProgress(progressType, false);
     }
 
