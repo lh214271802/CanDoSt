@@ -1,6 +1,7 @@
 package com.lh.base.fragment;
 
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -8,6 +9,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lh.R;
 import com.lh.base.adapter.MyBaseViewHolder;
 import com.lh.view.DividerDecoration;
+import com.lh.view.SupportGridItemDecoration;
 
 /**
  * Created by liaohui on 2017/9/12.
@@ -36,7 +38,9 @@ public abstract class BaseRVFragment<T> extends BaseRefreshFragment {
 
     protected void initRecyclerView(RecyclerView.LayoutManager manager, int emptyLayoutId) {
         recyclerView.setLayoutManager(manager);
-        if (manager instanceof LinearLayoutManager) {
+        if (manager instanceof GridLayoutManager) {
+            recyclerView.addItemDecoration(new SupportGridItemDecoration(mContext));
+        } else if (manager instanceof LinearLayoutManager) {
             recyclerView.addItemDecoration(new DividerDecoration(ContextCompat.getColor(mContext, R.color.whiteDF), 1, 0, 0));
         }
         if (mAdapter == null) {
