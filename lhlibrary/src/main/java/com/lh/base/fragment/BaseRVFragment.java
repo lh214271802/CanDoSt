@@ -21,7 +21,7 @@ public abstract class BaseRVFragment<T> extends BaseRefreshFragment {
     //    protected BaseRVAdapter<T> mAdapter;
     protected BaseQuickAdapter<T, MyBaseViewHolder> mAdapter;
     protected int page = 1;
-    protected int pagesize = 9;
+    protected int pagesize = 20;
 
     @Override
     protected void initViews() {

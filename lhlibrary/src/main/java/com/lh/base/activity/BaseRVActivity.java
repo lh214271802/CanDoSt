@@ -22,7 +22,7 @@ public abstract class BaseRVActivity<T> extends BaseRefreshActivity implements O
     //    protected BaseRVAdapter<T> mAdapter;
     protected BaseQuickAdapter<T, MyBaseViewHolder> mAdapter;
     protected int page = 1;
-    protected int pagesize = 9;
+    protected int pagesize = 20;
 
     @Override
     protected void initViews() {

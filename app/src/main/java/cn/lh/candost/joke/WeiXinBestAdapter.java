@@ -20,7 +20,7 @@ class WeiXinBestAdapter extends BaseQuickAdapter<WeiXinBestBean.ListBean, MyBase
 
     @Override
     protected void convert(MyBaseViewHolder helper, WeiXinBestBean.ListBean item) {
-        helper.setRoundImageUrl(R.id.image, item.firstImg, R.mipmap.ic_launcher, 6)
+        helper.setRoundImageUrl(R.id.image, item.firstImg, R.mipmap.ic_split_graph, 6)
                 .setText(R.id.title, item.title)
                 .setText(R.id.desc, item.source);
     }

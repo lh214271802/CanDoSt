@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lh.view.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/touch_bg"
-    android:orientation="vertical"
-    android:padding="@dimen/line15">
+    android:padding="@dimen/line9"
+    app:oscAccordTo="width">
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:alpha="0.8"
+        android:maxLines="2"
+        android:padding="@dimen/line15"
         android:textColor="@color/black"
-        android:textSize="@dimen/font16" />
+        android:textSize="@dimen/font16"
+        tools:text="春天在哪里" />
 
     <TextView
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
+        android:alpha="0.6"
+        android:maxLines="1"
+        android:padding="@dimen/line15"
         android:textColor="@color/gray8"
-        android:textSize="@dimen/font14" />
+        android:textSize="@dimen/font14"
+        tools:text="春天在哪里" />
 
-    <com.lh.view.SquareLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:oscAccordTo="width">
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.lh.view.SquareLayout>
-</RelativeLayout>
+</com.lh.view.SquareLayout>
