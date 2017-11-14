@@ -19,8 +19,7 @@ public abstract class BaseLazyRefreshFragment extends BaseLazyFragment implement
     protected SmartRefreshLayout smartRefreshLayout;
 
     @Override
-    protected void onCreateViewLazy(Bundle savedInstanceState) {
-        super.onCreateViewLazy(savedInstanceState);
+    protected void initViews() {
         if (smartRefreshLayout == null) {
             smartRefreshLayout = (SmartRefreshLayout) findViewById(R.id.smart_refresh_layout);
         }

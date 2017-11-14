@@ -25,8 +25,8 @@ public abstract class BaseLazyRVFragment<T> extends BaseLazyRefreshFragment {
     protected int pagesize = 9;
 
     @Override
-    protected void onCreateViewLazy(Bundle savedInstanceState) {
-        super.onCreateViewLazy(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         if (recyclerView == null) {
             recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         }
