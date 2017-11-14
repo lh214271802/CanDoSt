@@ -13,6 +13,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lh.R;
 import com.lh.api.AppApi;
+import com.lh.api.AppApiService;
 import com.lh.api.dowload.DownloadBean;
 import com.lh.api.dowload.DownloadService;
 import com.lh.api.dowload.SizeFormatUtils;
@@ -98,7 +99,7 @@ public class UploadService extends IntentService {
             }
         });
         requestBodyMap.put("file\"; filename=\"" + upFile.substring(upFile.lastIndexOf(File.separator)), fileRequestBody);
-        AppApi.getApiService().uploadFileInfo(upParams, requestBodyMap)
+        AppApi.getApiService(AppApiService.class).uploadFileInfo(upParams, requestBodyMap)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseBody>() {

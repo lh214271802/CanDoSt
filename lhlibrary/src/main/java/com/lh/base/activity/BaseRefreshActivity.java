@@ -21,8 +21,7 @@ public abstract class BaseRefreshActivity extends PermissionBaseActivity impleme
     protected SmartRefreshLayout smartRefreshLayout;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initViews() {
         smartRefreshLayout = findViewById(R.id.smart_refresh_layout);
     }
 

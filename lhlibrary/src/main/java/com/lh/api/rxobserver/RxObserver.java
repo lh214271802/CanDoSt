@@ -19,6 +19,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.net.ConnectException;
 
 import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import okhttp3.internal.connection.RouteException;
 import okhttp3.internal.http2.ConnectionShutdownException;
 import retrofit2.HttpException;
@@ -54,6 +55,11 @@ public abstract class RxObserver<T> implements Observer<T> {
     }
 
     @Override
+    public void onSubscribe(Disposable d) {
+
+    }
+
+    @Override
     public void onComplete() {
         handleProgress(progressType, false);
     }
@@ -80,9 +86,9 @@ public abstract class RxObserver<T> implements Observer<T> {
     }
 
     public boolean onHandleBean(BaseBean baseBean) {
-        if ("SUCCESS".equals(baseBean.status)) {
+        if ("0".equals(baseBean.error_code)) {
             return true;
-        } else if ("1000".equals(baseBean.errorCode)) {
+        } else if ("1000".equals(baseBean.error_code)) {
             view.goLogin();
         } else {
             onOtherSitutation(baseBean);

@@ -21,12 +21,12 @@ public abstract class BaseRVActivity<T> extends BaseRefreshActivity implements O
 
     //    protected BaseRVAdapter<T> mAdapter;
     protected BaseQuickAdapter<T, MyBaseViewHolder> mAdapter;
-    protected int page = 0;
+    protected int page = 1;
     protected int pagesize = 9;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initViews() {
+        super.initViews();
         recyclerView = findViewById(R.id.recyclerview);
     }
 

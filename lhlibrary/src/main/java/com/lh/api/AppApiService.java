@@ -18,7 +18,6 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 
-
 /**
  * Created by liaohui on 2017/7/20.
  */

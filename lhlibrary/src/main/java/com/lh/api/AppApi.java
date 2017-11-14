@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public final class AppApi {
 
     //    private static String BASE_URL_DEBUG = "http://139.224.199.7:81/";
-    private static String BASE_URL_DEBUG = "http://api.viimoo.cn/api_1_0_0_4/";
+    private static String BASE_URL_DEBUG = "http://v.juhe.cn/weixin/";
     public static String BASE_URL = "http://api.viimoo.cn/";
     private static OkHttpClient okHttpClient;
 
@@ -38,11 +38,11 @@ public final class AppApi {
         return okHttpClient;
     }
 
-    public static AppApiService getApiService() {
+    public static <T> T getApiService(Class<T> cls) {
         if (BuildConfig.DEBUG) {
-            return createApi(AppApiService.class, BASE_URL_DEBUG);
+            return createApi(cls, BASE_URL_DEBUG);
         }
-        return createApi(AppApiService.class, BASE_URL);
+        return createApi(cls, BASE_URL);
     }
 
 

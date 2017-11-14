@@ -9,6 +9,8 @@ import com.lh.ui.common.video.SelectVideoActivity;
 
 import java.util.List;
 
+import cn.lh.candost.joke.WeiXinBestActivity;
+
 public class MainActivity extends BaseActivity {
 
     private ImageView imageView;
@@ -40,7 +42,7 @@ public class MainActivity extends BaseActivity {
 //                                    }
 //                                })
 //                                .build());
-                SelectVideoActivity.startActivity(mContext,new SelectOptions.Builder()
+/*                SelectVideoActivity.startActivity(mContext,new SelectOptions.Builder()
                 .setCallback(new SelectOptions.Callback() {
                     @Override
                     public void doSelected(List<String> images) {
@@ -48,7 +50,8 @@ public class MainActivity extends BaseActivity {
                     }
                 })
                         .setHasCam(true)
-                        .setSelectCount(5).build());
+                        .setSelectCount(5).build());*/
+                WeiXinBestActivity.startActivity(mContext);
             }
         });
         imageView = findViewById(R.id.image_view);

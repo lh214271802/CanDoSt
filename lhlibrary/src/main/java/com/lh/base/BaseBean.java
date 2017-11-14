@@ -17,7 +17,7 @@ public class BaseBean<T> implements Serializable {
     public String status;
     public String msg;
     public int timeline;
-    public String errorCode;
-    public T data;
+    public String error_code;
+    public T result;
 
 }
