@@ -4,12 +4,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.lh.base.activity.BaseActivity;
-import com.lh.ui.common.image.folder.SelectOptions;
-import com.lh.ui.common.video.SelectVideoActivity;
 
-import java.util.List;
-
-import cn.lh.candost.joke.WeiXinBestActivity;
+import cn.lh.candost.ui.taoke.TaoKeActivity;
+import cn.lh.candost.ui.weixinbest.WeiXinBestActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -51,7 +48,8 @@ public class MainActivity extends BaseActivity {
                 })
                         .setHasCam(true)
                         .setSelectCount(5).build());*/
-                WeiXinBestActivity.startActivity(mContext);
+//                WeiXinBestActivity.startActivity(mContext);
+                TaoKeActivity.startActivity(mContext);
             }
         });
         imageView = findViewById(R.id.image_view);

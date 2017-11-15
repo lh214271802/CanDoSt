@@ -1,4 +1,4 @@
-package cn.lh.candost.joke;
+package cn.lh.candost.ui.weixinbest;
 
 import android.os.Parcel;
 import android.os.Parcelable;

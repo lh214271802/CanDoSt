@@ -28,6 +28,8 @@
     <dimen name="line66">66dp</dimen>
     <dimen name="line120">120dp</dimen>
 
+    <dimen name="font8">8sp</dimen>
+    <dimen name="font9">9sp</dimen>
     <dimen name="font10">10sp</dimen>
     <dimen name="font11">11sp</dimen>
     <dimen name="font12">12sp</dimen>

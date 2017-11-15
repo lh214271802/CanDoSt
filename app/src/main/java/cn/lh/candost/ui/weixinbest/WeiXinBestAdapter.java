@@ -1,4 +1,4 @@
-package cn.lh.candost.joke;
+package cn.lh.candost.ui.weixinbest;
 
 import android.support.annotation.Nullable;
 

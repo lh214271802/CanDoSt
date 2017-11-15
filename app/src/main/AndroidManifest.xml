@@ -48,7 +48,11 @@
         </activity>
 
         <activity
-            android:name=".joke.WeiXinBestActivity"
+            android:name=".ui.weixinbest.WeiXinBestActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.taoke.TaoKeActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait" />
     </application>

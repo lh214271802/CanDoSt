@@ -1,4 +1,4 @@
-package cn.lh.candost.joke;
+package cn.lh.candost.ui.weixinbest;
 
 import android.content.Context;
 import android.content.Intent;
@@ -62,7 +62,7 @@ public class WeiXinBestActivity extends BaseRVActivity<WeiXinBestBean.ListBean> 
     @Override
     protected void initDatas() {
         AppApi.getApiService(MyApiService.class)
-                .getWeiXinData(page, pagesize, "7e166b862bbeec73b85974d2b2d8c229", "json")
+                .getWeiXinData("http://v.juhe.cn/weixin/query/", page, pagesize, "7e166b862bbeec73b85974d2b2d8c229", "json")
                 .compose(this.<BaseBean<WeiXinBestBean>>bindToLifecycle())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

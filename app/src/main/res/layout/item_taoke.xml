@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10">
+
+    <com.lh.view.SquareLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:oscAccordTo="width">
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@mipmap/ic_product" />
+    </com.lh.view.SquareLayout>
+
+    <TextView
+        android:id="@+id/product_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/line6"
+        android:layout_marginTop="@dimen/line6"
+        android:maxLines="1"
+        android:textSize="@dimen/font13"
+        tools:text="袜子中筒袜秋冬款棉袜加绒保暖" />
+
+    <View style="@style/common_vertical_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/line15"
+        android:background="@color/alpha80_blue"
+        android:paddingBottom="@dimen/line9"
+        android:paddingLeft="@dimen/line15"
+        android:paddingRight="@dimen/line15"
+        android:paddingTop="@dimen/line9">
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:textColor="@color/gray8"
+            android:textSize="8sp"
+            tools:text="￥14.9\n券后价" />
+
+        <TextView
+            android:id="@+id/product_commission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:textColor="@color/gray8"
+            android:textSize="8sp"
+            tools:text="30.5%\n佣金(￥4.54)" />
+
+        <TextView
+            android:id="@+id/product_dsr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:textColor="@color/gray8"
+            android:textSize="8sp"
+            tools:text="0\n在线人数" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/line9">
+
+        <TextView
+            android:id="@+id/product_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_rect_trans"
+            android:textColor="@color/gray8"
+            android:textSize="9sp"
+            tools:text="券15" />
+
+        <TextView
+            android:id="@+id/product_old_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray8"
+            android:textSize="9sp"
+            tools:text="原价：￥29.9" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/product_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray90"
+        android:textSize="@dimen/font10"
+        tools:text="总销量/1.8万当日销量/1.2万2小时销量/2235" />
+</LinearLayout>
