@@ -31,8 +31,8 @@ public abstract class BaseRefreshFragment extends BaseFragment implements OnRefr
     protected void initRefreshLayout(boolean refreshable, boolean loadmoreable, RefreshHeader refreshHeader, RefreshFooter refreshFooter) {
         smartRefreshLayout.setEnableRefresh(refreshable);
         smartRefreshLayout.setEnableLoadmore(loadmoreable);
-        if (loadmoreable) {
-            smartRefreshLayout.autoLoadmore();
+        if (refreshable) {
+            smartRefreshLayout.autoRefresh();
         }
         if (refreshable) {
             smartRefreshLayout.setRefreshHeader(refreshHeader);
