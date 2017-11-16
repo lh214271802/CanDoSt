@@ -32,6 +32,7 @@ public abstract class BaseRefreshActivity extends PermissionBaseActivity impleme
     protected void initRefreshLayout(boolean refreshable, boolean loadmoreable, RefreshHeader refreshHeader, RefreshFooter refreshFooter) {
         smartRefreshLayout.setEnableRefresh(refreshable);
         smartRefreshLayout.setEnableLoadmore(loadmoreable);
+        smartRefreshLayout.setEnableAutoLoadmore(loadmoreable);
         if (refreshable) {
             smartRefreshLayout.autoRefresh();
         }

@@ -29,7 +29,7 @@ class TaoKeAdapter extends BaseQuickAdapter<TaoKeBean.DataBean, MyBaseViewHolder
                 ? (Double.parseDouble(item.goods_price) - Double.parseDouble(item.coupon_amount))
                 : Double.parseDouble(item.goods_price);
         String realPrice = new DecimalFormat("#.0").format(productRealPrice);
-        helper.setRoundImageUrl(R.id.product_image, item.goods_pic, R.mipmap.ic_product, 9)
+        helper.setRoundImageUrl(R.id.product_image, item.goods_pic, R.mipmap.ic_product, 15)
                 .setText(R.id.product_commission, new SpanUtils()
                         .append("" + (NumberFormat.getPercentInstance().format(item.commission_rate / Double.parseDouble(item.goods_price))))
                         .setForegroundColor(ContextCompat.getColor(mContext, R.color.price_red))
