@@ -1,9 +1,16 @@
 package cn.lh.candost;
 
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.anbetter.danmuku.DanMuParentView;
+import com.anbetter.danmuku.DanMuView;
+import com.anbetter.danmuku.model.DanMuModel;
+import com.anbetter.danmuku.model.utils.DimensionUtil;
+import com.anbetter.danmuku.view.OnDanMuTouchCallBackListener;
 import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.lh.base.activity.BaseActivity;
 import com.lh.base.activity.BaseRefreshActivity;
@@ -24,6 +31,8 @@ public class MainActivity extends BaseRefreshActivity {
 
     private ImageView imageView;
     private JZVideoPlayerStandard videoPlayer;
+    private DanMuParentView danmuParentView;
+    private DanMuView danmuView;
 
     @Override
     protected View getToolbarLayout() {
@@ -86,12 +95,48 @@ public class MainActivity extends BaseRefreshActivity {
                 WeiXinBestActivity.startActivity(mContext);
             }
         });
+        findViewById(R.id.danmu_show).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DanMuModel danMuModel = new DanMuModel();
+                danMuModel.setDisplayType(DanMuModel.RIGHT_TO_LEFT);
+                danMuModel.setPriority(DanMuModel.NORMAL);
+                danMuModel.marginLeft = DimensionUtil.dpToPx(mContext, 30);
+
+                // 显示的文本内容
+                danMuModel.textSize = DimensionUtil.spToPx(mContext, 14);
+                danMuModel.textColor = ContextCompat.getColor(mContext, R.color.colorAccent);
+                danMuModel.textMarginLeft = DimensionUtil.dpToPx(mContext, 5);
+                danMuModel.text = "春风油绿江南岸";
+
+                // 弹幕文本背景
+                danMuModel.textBackground = ContextCompat.getDrawable(mContext, R.drawable.round_rect_blue);
+                danMuModel.textBackgroundMarginLeft = DimensionUtil.dpToPx(mContext, 15);
+                danMuModel.textBackgroundPaddingTop = DimensionUtil.dpToPx(mContext, 3);
+                danMuModel.textBackgroundPaddingBottom = DimensionUtil.dpToPx(mContext, 3);
+                danMuModel.textBackgroundPaddingRight = DimensionUtil.dpToPx(mContext, 15);
+                danMuModel.enableTouch(true);
+                //弹幕点击事件
+                danMuModel.setOnTouchCallBackListener(new OnDanMuTouchCallBackListener() {
+                    @Override
+                    public void callBack(DanMuModel danMuView) {
+                        ToastUtils.showShort("点击啊");
+                    }
+                });
+
+                danmuView.add(danMuModel);
+            }
+        });
         imageView = findViewById(R.id.image_view);
         videoPlayer = findViewById(R.id.video_player);
+        danmuParentView = findViewById(R.id.danmu_parent_view);
+        danmuView = findViewById(R.id.danmu_view);
+        danmuView.prepare();
     }
 
     @Override
     protected void initDatas() {
+        danmuView.hideAllDanMuView(false);
     }
 
     @Override

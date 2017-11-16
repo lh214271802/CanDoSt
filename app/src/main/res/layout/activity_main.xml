@@ -59,16 +59,42 @@
                     android:padding="@dimen/line24"
                     android:text="微信精选" />
 
+                <TextView
+                    android:id="@+id/danmu_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:gravity="center"
+                    android:padding="@dimen/line24"
+                    android:text="微信精选" />
+
                 <ImageView
                     android:id="@+id/image_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <cn.jzvd.JZVideoPlayerStandard
-                    android:id="@+id/video_player"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp" />
+                    android:layout_height="wrap_content">
 
+                    <cn.jzvd.JZVideoPlayerStandard
+                        android:id="@+id/video_player"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp" />
+
+                    <com.anbetter.danmuku.DanMuParentView
+                        android:id="@+id/danmu_parent_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp">
+
+                        <com.anbetter.danmuku.DanMuView
+                            android:id="@+id/danmu_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </com.anbetter.danmuku.DanMuParentView>
+
+                </RelativeLayout>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
