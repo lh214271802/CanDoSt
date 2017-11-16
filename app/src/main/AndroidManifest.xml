@@ -39,7 +39,10 @@
             android:name="OnePush_UMENG_103"
             android:value="com.peng.one.push.umeng.UMengPushClient" />
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
