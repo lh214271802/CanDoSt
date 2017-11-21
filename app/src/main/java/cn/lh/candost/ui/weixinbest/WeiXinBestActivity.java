@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.lh.R;
 import com.lh.api.AppApi;
 import com.lh.api.rxobserver.RxObserver;
 import com.lh.base.BaseBean;
@@ -13,7 +14,6 @@ import com.lh.base.activity.BaseRVActivity;
 import com.lh.base.adapter.MyBaseViewHolder;
 import com.lh.ui.common.web.CommonWebAcitivity;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.lh.R;
 
 import java.util.ArrayList;
 
@@ -61,6 +61,16 @@ public class WeiXinBestActivity extends BaseRVActivity<WeiXinBestBean.ListBean> 
 
     @Override
     protected void initDatas() {
+
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        page++;
+        getListDatas();
+    }
+
+    private void getListDatas() {
         AppApi.getApiService(MyApiService.class)
                 .getWeiXinData("http://v.juhe.cn/weixin/query", page, pagesize, "7e166b862bbeec73b85974d2b2d8c229", "json")
                 .compose(this.<BaseBean<WeiXinBestBean>>bindToLifecycle())
@@ -85,14 +95,8 @@ public class WeiXinBestActivity extends BaseRVActivity<WeiXinBestBean.ListBean> 
     }
 
     @Override
-    public void onLoadmore(RefreshLayout refreshlayout) {
-        page++;
-        initDatas();
-    }
-
-    @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         page = 1;
-        initDatas();
+        getListDatas();
     }
 }

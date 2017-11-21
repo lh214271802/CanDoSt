@@ -8,9 +8,7 @@ import android.view.View;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lh.api.AppApi;
-import com.lh.api.AppApiService;
 import com.lh.api.rxobserver.RxObserver;
-import com.lh.base.BaseBean;
 import com.lh.base.activity.BaseRVActivity;
 import com.lh.base.adapter.MyBaseViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -18,7 +16,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import java.util.ArrayList;
 
 import cn.lh.candost.MyApiService;
-import cn.lh.candost.ui.weixinbest.WeiXinBestBean;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -61,6 +58,16 @@ public class TaoKeActivity extends BaseRVActivity<TaoKeBean.DataBean> {
 
     @Override
     protected void initDatas() {
+
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        page++;
+        getListDatas();
+    }
+
+    private void getListDatas() {
         AppApi.getApiService(MyApiService.class)
                 .getTaokeData("http://api.taokezhushou.com/api/v1/all", page, "2ee7d41d3a2b3711")
                 .compose(this.<TaoKeBean>bindToLifecycle())
@@ -85,14 +92,8 @@ public class TaoKeActivity extends BaseRVActivity<TaoKeBean.DataBean> {
     }
 
     @Override
-    public void onLoadmore(RefreshLayout refreshlayout) {
-        page++;
-        initDatas();
-    }
-
-    @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         page = 1;
-        initDatas();
+        getListDatas();
     }
 }
