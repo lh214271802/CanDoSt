@@ -28,7 +28,7 @@ dependencies {
     //SVG动画 https://github.com/jaredrummler/AnimatedSvgView
 //    api 'com.jaredrummler:animated-svg-view:1.0.4'
     //loading   https://github.com/ldoublem/LoadingView
-    api 'com.ldoublem.loadingview:loadingviewlib:1.0'
+//    api 'com.ldoublem.loadingview:loadingviewlib:1.0'
     //流式布局  https://github.com/hongyangAndroid/FlowLayout
     api 'com.hyman:flowlayout-lib:1.1.2'
     //广告栏控件 https://github.com/youth5201314/banner
@@ -38,15 +38,15 @@ dependencies {
     //refresh If you use the special Header
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
     //android utils     https://github.com/Blankj/AndroidUtilCode
-    api 'com.blankj:utilcode:1.9.3'
+    api 'com.blankj:utilcode:1.9.8'
     //ViewPager的导航条 http://www.jianshu.com/p/f630076d0935
-    //TODO https://github.com/LuckyJayce/ViewPagerIndicator#viewpagerindicator
+    // https://github.com/LuckyJayce/ViewPagerIndicator#viewpagerindicator
     api 'com.shizhefei:ViewPagerIndicator:1.1.6'
     //adapter http://www.jianshu.com/p/b343fcff51b0 版本 https://github.com/CymChad/BaseRecyclerViewAdapterHelper/releases
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
     //如果需要悬浮粘性头部    https://github.com/Gavin-ZYX/StickyDecoration
     //permission    https://github.com/googlesamples/easypermissions
-    api 'pub.devrel:easypermissions:1.0.0'
+    api 'pub.devrel:easypermissions:1.0.1'
     // Net      http://www.jianshu.com/p/dbc46cc033fb
     api 'com.squareup.retrofit2:retrofit:2.3.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
@@ -55,7 +55,7 @@ dependencies {
     // Rx   https://github.com/ReactiveX/RxAndroid
     api 'io.reactivex.rxjava2:rxandroid:2.0.1'
     api 'io.reactivex.rxjava2:rxjava:2.1.5'
-    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.0'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
     //方法数超65535限制
     api 'com.android.support:multidex:1.0.1'
     // Image    https://github.com/bumptech/glide
@@ -66,7 +66,7 @@ dependencies {
     //glide关联okhttp3
 //    api 'com.github.bumptech.glide:okhttp3-integration:4.3.1'
     api 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
-    // Annotation
+    // https://github.com/JakeWharton/butterknife
     api 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     // Bus                         https://github.com/greenrobot/EventBus
@@ -81,8 +81,9 @@ dependencies {
     //数据库                          https://github.com/greenrobot/greenDAO
     api 'org.greenrobot:greendao:3.2.2'
     //腾讯对WebView的优化 https://github.com/Tencent/VasSonic/tree/master/sonic-android
-    //如果更喜欢腾讯X5内核   https://github.com/Justson/AgentWebX5   https://x5.tencent.com/tbs/guide/sdkInit.html
     api 'com.tencent.sonic:sdk:2.0.0-alpha'
+    //如果更喜欢腾讯X5内核   https://github.com/Justson/AgentWebX5   https://x5.tencent.com/tbs/guide/sdkInit.html
+//    api 'com.just.agentwebX5:agentwebX5:1.0.0'
     /*
 
         //微信支付与支付宝支付            https://github.com/mayubao/Android-Pay
