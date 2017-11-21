@@ -81,6 +81,11 @@ android {
         disable 'InvalidPackage'
         abortOnError false      // 移除lint检查的error
     }
+    //支持java8
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
