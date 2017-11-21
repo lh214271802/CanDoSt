@@ -190,8 +190,8 @@ public class ShareUtils {
             public void run() {
                 try {
                     final Bitmap bitmap = Glide.with(context)
-                            .load(shareImageUrl.trim())
                             .asBitmap()
+                            .load(shareImageUrl.trim())
                             .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                             .get();
                     final String extDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)

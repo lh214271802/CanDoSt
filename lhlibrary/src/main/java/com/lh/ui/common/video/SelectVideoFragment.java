@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lh.R;
+import com.lh.base.GlideUtils;
 import com.lh.base.fragment.BaseFragment;
 import com.lh.ui.common.crop.CropActivity;
 import com.lh.ui.common.image.folder.EmptyLayout;
@@ -309,10 +310,10 @@ public class SelectVideoFragment extends BaseFragment implements OnClickListener
     @Override
     public void displayImage(final ImageView iv, final String path) {
         if (TextUtils.isEmpty(path)) return;
-        Glide.with(mContext).load(Uri.fromFile(new File(path)))
-                .asBitmap()
+        Glide.with(mContext)
+                .asBitmap().load(Uri.fromFile(new File(path))).apply(GlideUtils.getNormalImageOptions()
                 .error(R.mipmap.ic_split_graph)
-                .centerCrop()
+                .centerCrop())
                 .into(iv);
     }
 

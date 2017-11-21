@@ -9,18 +9,13 @@ import android.support.multidex.MultiDex;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.peng.one.push.OnePush;
-import com.peng.one.push.core.OnOnePushRegisterListener;
-import com.umeng.analytics.MobclickAgent;
-import com.lh.api.AppApi;
 import com.lh.api.Constants;
 import com.lh.util.SharedPreferencesUtil;
 import com.lh.util.push.RomUtils;
+import com.peng.one.push.OnePush;
+import com.peng.one.push.core.OnOnePushRegisterListener;
+import com.umeng.analytics.MobclickAgent;
 
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -47,7 +42,6 @@ public class FrameApplication extends Application {
         /*----------友盟统计--------------*/
         MobclickAgent.setScenarioType(getApplicationContext(), MobclickAgent.EScenarioType.E_UM_NORMAL);
         MobclickAgent.setDebugMode(true);
-        initGlide();
         initUMengPush();
         SharedPreferencesUtil.init(instance, Constants.APP_NAME, MODE_PRIVATE);
     }
@@ -98,14 +92,6 @@ public class FrameApplication extends Application {
             }
         }
         return null;
-    }
-
-    /**
-     * 初始化图片加载框架Glide
-     */
-    private void initGlide() {//TODO fuck the OKhttp
-        Glide.get(this).register(GlideUrl.class, InputStream.class,
-                new OkHttpUrlLoader.Factory(AppApi.getOkHttpClient()));
     }
 
 

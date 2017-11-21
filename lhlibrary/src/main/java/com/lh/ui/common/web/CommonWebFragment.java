@@ -3,6 +3,7 @@ package com.lh.ui.common.web;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.lh.R;
 import com.lh.base.fragment.BaseFragment;
 import com.lh.view.progressweb.ProgressWebView;
@@ -36,11 +37,17 @@ public class CommonWebFragment extends BaseFragment implements WebViewContract.V
 
     @Override
     protected void initViews() {
-        progressWebview =  (ProgressWebView)getView().findViewById(R.id.progress_webview);
+        progressWebview = (ProgressWebView) getView().findViewById(R.id.progress_webview);
         progressWebview.loadUrl(webUrl, haveProgress, new ProgressWebView.OnWebViewCallBack() {
             @Override
             public void onGetWebViewTitle(String title) {
                 mOperator.setViewTitle(title);
+            }
+
+            @Override
+            public void onExceptionHappened() {
+                ToastUtils.showShort("网络异常，请重新连接...");
+                activity.finish();
             }
         });
 

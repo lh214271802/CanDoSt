@@ -36,6 +36,7 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
 import com.tencent.sonic.sdk.SonicCacheInterceptor;
 import com.tencent.sonic.sdk.SonicConfig;
@@ -103,7 +104,12 @@ public class ProgressWebView extends LinearLayout {
         }
         this.haveProgress = haveProgress;
         mProgressBar.setVisibility(haveProgress ? VISIBLE : GONE);
-        initWebview(url);
+        try {
+            initWebview(url);
+        } catch (Exception e) {
+            LogUtils.e(e);
+            if (this.callBack != null) this.callBack.onExceptionHappened();
+        }
     }
 
     private SonicSession sonicSession;
@@ -400,6 +406,8 @@ public class ProgressWebView extends LinearLayout {
 
     public interface OnWebViewCallBack {
         void onGetWebViewTitle(String title);
+
+        void onExceptionHappened();
     }
 
     public void onDestroy() {

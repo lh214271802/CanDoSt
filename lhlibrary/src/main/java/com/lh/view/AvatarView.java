@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.lh.R;
+import com.lh.base.GlideUtils;
 
 
 public class AvatarView extends CircleImageView {
@@ -73,9 +74,10 @@ public class AvatarView extends CircleImageView {
         }
 
         if (aty != null) {
-            Glide.with(aty).load(headUrl)
+            Glide.with(aty).load(headUrl).apply(GlideUtils.getNormalImageOptions()
                     .error(R.mipmap.widget_default_face)
-                    .placeholder(R.mipmap.widget_default_face)
+                    .fallback(R.mipmap.widget_default_face)
+                    .placeholder(R.mipmap.widget_default_face))
                     .into(this);
         }
     }

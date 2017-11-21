@@ -3,6 +3,7 @@ package com.lh.ui.common.image.gallery;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.lh.R;
+import com.lh.base.GlideUtils;
 
 import java.util.List;
 
@@ -50,27 +51,24 @@ public class ImagePagerAdapter extends PagerAdapter {
         final ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         Glide.with(mContext)
                 .load(imageSources.get(position))
-//                .dontAnimate()
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .animate(R.anim.alpha_toshow)// PICTURE
-//                .placeholder(R.color.gray_ba)
-                .fitCenter()
-                .into(new GlideDrawableImageViewTarget(imageView) {
+                .apply(GlideUtils.getNormalImageOptions().fitCenter())
+                .transition(DrawableTransitionOptions.withCrossFade(1000))
+                .into(new DrawableImageViewTarget(imageView, true) {
                     @Override
-                    public void onLoadStarted(Drawable placeholder) {
+                    public void onLoadStarted(@Nullable Drawable placeholder) {
                         super.onLoadStarted(placeholder);
                         progressBar.setVisibility(View.VISIBLE);
                     }
 
                     @Override
-                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                        super.onLoadFailed(e, errorDrawable);
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                        super.onLoadFailed(errorDrawable);
                         progressBar.setVisibility(View.GONE);
                     }
 
                     @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
-                        super.onResourceReady(resource, animation);
+                    public void onResourceReady(Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        super.onResourceReady(resource, transition);
                         progressBar.setVisibility(View.GONE);
                     }
                 });

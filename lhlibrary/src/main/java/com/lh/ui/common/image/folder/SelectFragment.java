@@ -25,6 +25,7 @@ import com.blankj.utilcode.util.SDCardUtils;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lh.R;
+import com.lh.base.GlideUtils;
 import com.lh.base.fragment.BaseFragment;
 import com.lh.ui.common.crop.CropActivity;
 import com.lh.ui.common.image.bean.Image;
@@ -155,7 +156,7 @@ public class SelectFragment extends BaseFragment implements SelectImageContract.
 
         } else if (i == R.id.btn_preview) {
             if (mSelectedImage.size() > 0) {
-                ImageGalleryActivity.startActivity(activity, 0, getArray(mSelectedImage), false);
+                ImageGalleryActivity.startActivity(activity, 0, getArray(mSelectedImage), true);
             }
 
         } else if (i == R.id.btn_title_select) {
@@ -367,10 +368,9 @@ public class SelectFragment extends BaseFragment implements SelectImageContract.
     @Override
     public void displayImage(final ImageView iv, final String path) {
         if (TextUtils.isEmpty(path)) return;
-        Glide.with(mContext).load(path)
-                .asBitmap()
+        Glide.with(mContext).load(path).apply(GlideUtils.getNormalImageOptions()
                 .centerCrop()
-                .error(R.mipmap.ic_split_graph)
+                .error(R.mipmap.ic_split_graph))
                 .into(iv);
     }
 

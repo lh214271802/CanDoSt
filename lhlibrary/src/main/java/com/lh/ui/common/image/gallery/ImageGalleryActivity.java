@@ -120,8 +120,8 @@ public class ImageGalleryActivity extends PermissionBaseActivity implements View
             public void run() {
                 try {
                     Bitmap bitmap = Glide.with(mContext)
-                            .load(path)
                             .asBitmap()
+                            .load(path)
                             .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                             .get();
                     final String extDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)

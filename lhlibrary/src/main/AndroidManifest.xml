@@ -53,10 +53,6 @@
 
     <application>
 
-        <!--Glide配置-->
-        <meta-data
-            android:name="com.lh.base.AppGlideModule"
-            android:value="GlideModule" />
         <receiver android:name="com.lh.util.push.UMengPushReceiver">
             <intent-filter>
                 <action android:name="com.peng.one.push.ACTION_RECEIVE_NOTIFICATION" />

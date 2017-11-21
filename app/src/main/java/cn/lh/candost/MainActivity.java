@@ -9,17 +9,17 @@ import com.anbetter.danmuku.DanMuView;
 import com.anbetter.danmuku.model.DanMuModel;
 import com.anbetter.danmuku.model.utils.DimensionUtil;
 import com.anbetter.danmuku.view.OnDanMuTouchCallBackListener;
-import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
-import com.lh.base.activity.BaseActivity;
 import com.lh.base.activity.BaseRefreshActivity;
 import com.lh.ui.common.image.folder.SelectImageActivity;
 import com.lh.ui.common.image.folder.SelectOptions;
+import com.lh.ui.common.image.gallery.ImageGalleryActivity;
 import com.lh.ui.common.video.SelectVideoActivity;
 import com.lh.util.StatusBarUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.jzvd.JZVideoPlayer;
@@ -66,6 +66,20 @@ public class MainActivity extends BaseRefreshActivity {
                                 })
                                 .build());
 
+            }
+        });
+        findViewById(R.id.image_gallery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageGalleryActivity.startActivity(mContext, 0, new ArrayList<String>() {{
+                    add("http://img06.tooopen.com/images/20161029/tooopen_sy_183839859946.jpg");
+                    add("http://img.zcool.cn/community/010fc7554b7d28000001bf721916fc.jpg@1280w_1l_2o_100sh.jpg");
+                    add("http://f.hiphotos.baidu.com/image/pic/item/3ac79f3df8dcd1008742b1cc788b4710b8122f04.jpg");
+                    add("http://h.hiphotos.baidu.com/image/pic/item/f31fbe096b63f624bcc66aea8d44ebf81b4ca344.jpg");
+                    add("http://img0.imgtn.bdimg.com/it/u=2020395685,1666600559&fm=214&gp=0.jpg");
+                    add("http://ww2.sinaimg.cn/large/85d77acdgw1f4hs72wzxkg20dw07t7k3.jpg");
+                    add("http://ww1.sinaimg.cn/large/85cccab3gw1etdl4dxvt0g20ci071kjl.jpg");
+                }}, true);
             }
         });
         findViewById(R.id.select_video).setOnClickListener(new View.OnClickListener() {

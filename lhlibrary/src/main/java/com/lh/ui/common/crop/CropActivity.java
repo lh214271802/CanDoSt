@@ -10,6 +10,7 @@ import com.blankj.utilcode.util.CloseUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.bumptech.glide.Glide;
 import com.lh.R;
+import com.lh.base.GlideUtils;
 import com.lh.base.activity.BaseActivity;
 import com.lh.ui.common.image.folder.SelectOptions;
 
@@ -62,8 +63,7 @@ public class CropActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void initDatas() {
         imageUrl = mOption.getSelectedImages().get(0);
-        Glide.with(mContext).load(imageUrl)
-                .fitCenter()
+        Glide.with(mContext).load(imageUrl).apply(GlideUtils.getNormalImageOptions().fitCenter())
                 .into(mCropLayout.getImageView());
 
         mCropLayout.setCropWidth(mOption.getCropWidth());

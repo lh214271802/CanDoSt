@@ -12,14 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.BitmapRequestBuilder;
-import com.bumptech.glide.GifRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.lh.R;
-import com.lh.glide.GlideRoundTransform;
+import com.lh.base.GlideUtils;
 import com.lh.ui.common.image.gallery.ImageGalleryActivity;
 
 import java.util.ArrayList;
@@ -144,19 +140,18 @@ public class TweetPicturesLayout extends ViewGroup implements View.OnClickListen
                 addView(view);
                 if (image.toLowerCase().endsWith("gif")) {
                     view.findViewById(R.id.iv_is_gif).setVisibility(VISIBLE);
-                    GifRequestBuilder<String> builder = requestManager.load(image)
-                            .asGif()
+                    requestManager.asGif().load(image).apply(GlideUtils.getNormalImageOptions()
                             .placeholder(R.mipmap.ic_launcher)
-                            .error(R.mipmap.ic_launcher);
-                    builder.diskCacheStrategy(DiskCacheStrategy.ALL).into((ImageView) view.findViewById(R.id.iv_picture));
+                            .fallback(R.mipmap.ic_launcher)
+                            .error(R.mipmap.ic_launcher))
+                            .into((ImageView) view.findViewById(R.id.iv_picture));
                 } else {
-                    BitmapRequestBuilder builder = requestManager.load(image)
-                            .asBitmap()
-                            .transform(new CenterCrop(this.getContext()), new GlideRoundTransform(this.getContext(), 1))
+                    view.findViewById(R.id.iv_is_gif).setVisibility(GONE);
+                    requestManager.asBitmap().load(image).apply(GlideUtils.getNormalImageOptions()
                             .placeholder(R.mipmap.ic_launcher)
-                            .error(R.mipmap.ic_launcher);
-                    ImageView iamgeView = (ImageView) view.findViewById(R.id.iv_picture);
-                    builder.diskCacheStrategy(DiskCacheStrategy.ALL).into(iamgeView);
+                            .fallback(R.mipmap.ic_launcher)
+                            .error(R.mipmap.ic_launcher))
+                            .into((ImageView) view.findViewById(R.id.iv_picture));
                 }
             }
             // all do requestLayout
@@ -325,7 +320,7 @@ public class TweetPicturesLayout extends ViewGroup implements View.OnClickListen
         if (paths == null || paths.size() <= 0)
             return;
 
-        ImageGalleryActivity.startActivity(getContext(), index, paths, false);
+        ImageGalleryActivity.startActivity(getContext(), index, paths, true);
     }
 
     public void setAllImagesList(List<String> allImagesList) {

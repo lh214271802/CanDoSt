@@ -1,23 +1,23 @@
 package com.lh.base;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.BitmapRequestBuilder;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.ImageViewTarget;
 import com.lh.R;
-import com.lh.glide.CropCircleTransformation;
-import com.lh.glide.RoundedCornersTransformation;
 import com.lh.ui.bean.UserInfoBean;
 import com.lh.util.SharedPreferencesUtil;
 
 import java.io.UnsupportedEncodingException;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 
 /**
@@ -34,7 +34,7 @@ public class BaseUtils {
     /**
      * 清除用户信息
      */
-    public static void clearLoginInfo(Context context,boolean toLogin) {
+    public static void clearLoginInfo(Context context, boolean toLogin) {
         SharedPreferencesUtil.getInstance().remove("UserInfo");
         if (toLogin) {//TODO tologin
 //            context.startActivity(new Intent(context,LoginAcitivity.class));
@@ -64,13 +64,12 @@ public class BaseUtils {
     /**
      * 加载图片的时候同时发生其他的操作,需要重写GlideDrawableImageViewTarget中的onLoadStarted、onLoadFailed、onResourceReady三个方法
      */
-    public static void setViewImageWithHandle(final Context mContext, String url, GlideDrawableImageViewTarget target) {
+    public static void setViewImageWithHandle(final Context mContext, String url, ImageViewTarget<Drawable> target) {
         Glide.with(mContext)
-                .load(url)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .animate(R.anim.start_fullscreen)
+                .load(url).apply(GlideUtils.getNormalImageOptions()
                 .placeholder(R.mipmap.ic_launcher)
-                .fitCenter()
+                .fallback(R.mipmap.ic_launcher)
+                .fitCenter())
                 .into(target);
     }
 
@@ -78,21 +77,22 @@ public class BaseUtils {
         setViewImage(mContext, imageView, url, R.mipmap.ic_launcher, R.mipmap.ic_launcher, false);
     }
 
+    @SuppressLint("CheckResult")
     public static void setViewImage(final Context mContext, ImageView imageView, String url, int placeHolder, int errorHolder, boolean isCircle) {
-        BitmapRequestBuilder<String, Bitmap> drawableRequestBuilder = Glide.with(mContext)
-                .load(url).asBitmap();
+        RequestOptions requestOptions = GlideUtils.getNormalImageOptions();
+        RequestBuilder<Drawable> drawableRequestBuilder = Glide.with(mContext)
+                .load(url);
         if (placeHolder != 0) {
-            drawableRequestBuilder.placeholder(placeHolder);
+            requestOptions.placeholder(placeHolder);
         }
-
         if (errorHolder != 0) {
-            drawableRequestBuilder.error(errorHolder);
+            requestOptions.error(errorHolder);
         }
         if (isCircle) {
-            drawableRequestBuilder.transform(new CenterCrop(mContext), new CropCircleTransformation(mContext));
+            requestOptions.circleCrop();
         }
         drawableRequestBuilder
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(requestOptions)
                 .into(imageView);
     }
 
@@ -100,19 +100,21 @@ public class BaseUtils {
         setRoundImage(mContext, imageView, url, R.mipmap.ic_launcher, R.mipmap.ic_launcher, 4);
     }
 
+    @SuppressLint("CheckResult")
     public static void setRoundImage(final Context mContext, ImageView imageView, String url, int placeHolder, int errorHolder, int radius) {
-        BitmapRequestBuilder<String, Bitmap> drawableRequestBuilder = Glide.with(mContext)
-                .load(url).asBitmap();
+        RequestBuilder<Drawable> drawableRequestBuilder = Glide.with(mContext)
+                .load(url);
+        RequestOptions requestOptions = GlideUtils.getNormalImageOptions();
         if (placeHolder != 0) {
-            drawableRequestBuilder.placeholder(placeHolder);
+            requestOptions.placeholder(placeHolder);
         }
 
         if (errorHolder != 0) {
-            drawableRequestBuilder.error(errorHolder);
+            requestOptions.error(errorHolder);
         }
-        drawableRequestBuilder.transform(new RoundedCornersTransformation(mContext, radius, 0, RoundedCornersTransformation.CornerType.ALL));
+        requestOptions.transform(new RoundedCornersTransformation(radius, 0, RoundedCornersTransformation.CornerType.ALL));
         drawableRequestBuilder
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(requestOptions)
                 .into(imageView);
     }
 
