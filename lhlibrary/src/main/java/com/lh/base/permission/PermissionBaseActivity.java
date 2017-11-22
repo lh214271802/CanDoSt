@@ -41,7 +41,7 @@ public abstract class PermissionBaseActivity extends BaseActivity implements Eas
             requestMessage.deleteCharAt(requestMessage.lastIndexOf("、"));
             requestMessage.append("权限");
             if (EasyPermissions.hasPermissions(this, persArray)) {
-                callBack.onSuccess();
+                this.callBack.onSuccess();
             } else {
                 EasyPermissions.requestPermissions(this, new String(requestMessage), this.requestCode, persArray);
             }
