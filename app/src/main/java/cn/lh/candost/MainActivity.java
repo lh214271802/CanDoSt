@@ -101,6 +101,7 @@ public class MainActivity extends BaseRefreshActivity {
         });
         imageView = findViewById(R.id.image_view);
         videoPlayer = findViewById(R.id.video_player);
+        videoPlayer.setSystemTimeAndBattery();
         danmuParentView = findViewById(R.id.danmu_parent_view);
         danmuView = findViewById(R.id.danmu_view);
         danmuView.prepare();
