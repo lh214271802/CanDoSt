@@ -97,7 +97,8 @@
                     <com.anbetter.danmuku.DanMuView
                         android:id="@+id/danmu_view"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="100dp"
+                        android:layout_marginTop="30dp" />
 
                 </com.anbetter.danmuku.DanMuParentView>
 
