@@ -1,8 +1,16 @@
 package cn.lh.candost;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.graphics.Typeface;
+import android.os.Environment;
 import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.anbetter.danmuku.DanMuParentView;
 import com.anbetter.danmuku.DanMuView;
@@ -17,11 +25,18 @@ import com.lh.ui.common.image.gallery.ImageGalleryActivity;
 import com.lh.ui.common.video.SelectVideoActivity;
 import com.lh.util.StatusBarUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.tencent.tinker.lib.tinker.Tinker;
+import com.tencent.tinker.lib.tinker.TinkerInstaller;
+import com.tencent.tinker.loader.shareutil.ShareConstants;
+import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
 
 import java.util.ArrayList;
 
 import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
+import cn.lh.candost.tinker.app.BaseBuildInfo;
+import cn.lh.candost.tinker.app.BuildInfo;
+import cn.lh.candost.tinker.util.Utils;
 import cn.lh.candost.ui.taoke.TaoKeActivity;
 import cn.lh.candost.ui.weixinbest.WeiXinBestActivity;
 
@@ -43,8 +58,25 @@ public class MainActivity extends BaseRefreshActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Utils.setBackground(false);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JZVideoPlayer.releaseAllVideos();
+        Utils.setBackground(true);
+    }
+
+    @Override
     protected void initViews() {
         super.initViews();
+        //TODO 加载补丁包
+        TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), Environment.getExternalStorageDirectory().getAbsolutePath() + "/patch_signed_7zip");
+
 //        BarUtils.setStatusBarAlpha(this);
         StatusBarUtil.StatusBarLightMode(this);
         initRefreshLayout(true, false);
@@ -105,6 +137,56 @@ public class MainActivity extends BaseRefreshActivity {
         danmuParentView = findViewById(R.id.danmu_parent_view);
         danmuView = findViewById(R.id.danmu_view);
         danmuView.prepare();
+
+        findViewById(R.id.show_tinker_info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showInfo(mContext);
+            }
+        });
+    }
+
+    public boolean showInfo(Context context) {
+        // add more Build Info
+        final StringBuilder sb = new StringBuilder();
+        Tinker tinker = Tinker.with(getApplicationContext());
+        if (tinker.isTinkerLoaded()) {
+            sb.append(String.format("[patch is loaded] \n"));
+            sb.append(String.format("[buildConfig TINKER_ID] %s \n", BuildInfo.TINKER_ID));
+            sb.append(String.format("[buildConfig BASE_TINKER_ID] %s \n", BaseBuildInfo.BASE_TINKER_ID));
+
+            sb.append(String.format("[buildConfig MESSSAGE] %s \n", BuildInfo.MESSAGE));
+            sb.append(String.format("[TINKER_ID] %s \n", tinker.getTinkerLoadResultIfPresent().getPackageConfigByName(ShareConstants.TINKER_ID)));
+            sb.append(String.format("[packageConfig patchMessage] %s \n", tinker.getTinkerLoadResultIfPresent().getPackageConfigByName("patchMessage")));
+            sb.append(String.format("[TINKER_ID Rom Space] %d k \n", tinker.getTinkerRomSpace()));
+
+        } else {
+            sb.append(String.format("[patch is not loaded] \n"));
+            sb.append(String.format("[buildConfig TINKER_ID] %s \n", BuildInfo.TINKER_ID));
+            sb.append(String.format("[buildConfig BASE_TINKER_ID] %s \n", BaseBuildInfo.BASE_TINKER_ID));
+            sb.append("\nfuck you \n");
+
+            sb.append(String.format("[buildConfig MESSSAGE] %s \n", BuildInfo.MESSAGE));
+            sb.append(String.format("[TINKER_ID] %s \n", ShareTinkerInternals.getManifestTinkerID(getApplicationContext())));
+        }
+        sb.append(String.format("[BaseBuildInfo Message] %s \n", BaseBuildInfo.TEST_MESSAGE));
+
+        final TextView v = new TextView(context);
+        v.setText(sb);
+        v.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+        v.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+        v.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        v.setTextColor(0xFF000000);
+        v.setTypeface(Typeface.MONOSPACE);
+        final int padding = 16;
+        v.setPadding(padding, padding, padding, padding);
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setCancelable(true);
+        builder.setView(v);
+        final AlertDialog alert = builder.create();
+        alert.show();
+        return true;
     }
 
     @Override
@@ -120,11 +202,6 @@ public class MainActivity extends BaseRefreshActivity {
         super.onBackPressed();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        JZVideoPlayer.releaseAllVideos();
-    }
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {

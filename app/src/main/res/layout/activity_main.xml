@@ -79,6 +79,15 @@
                     android:padding="@dimen/line24"
                     android:text="图片预览呗" />
 
+                <TextView
+                    android:id="@+id/show_tinker_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:gravity="center"
+                    android:padding="@dimen/line24"
+                    android:text="tinker信息" />
+
                 <ImageView
                     android:id="@+id/image_view"
                     android:layout_width="match_parent"

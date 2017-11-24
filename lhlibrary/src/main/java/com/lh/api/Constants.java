@@ -1,6 +1,6 @@
 package com.lh.api;
 
-import com.lh.FrameApplication;
+import com.blankj.utilcode.util.Utils;
 
 import java.io.File;
 
@@ -13,7 +13,7 @@ public class Constants {
     /**
      * 缓存地址
      */
-    public static String PATH_CACHE = FrameApplication.getInstance().getCacheDir().getAbsolutePath() + File.separator + "lh";
+    public static String PATH_CACHE = Utils.getApp().getCacheDir().getAbsolutePath() + File.separator + "lh";
     public static String APP_NAME = "lh";
 
 }
