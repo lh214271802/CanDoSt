@@ -123,7 +123,7 @@ dependencies {
     implementation project(':lhlibrary')
 
     //可选，用于生成application类
-    provided("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
+    compileOnly("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
     //tinker的核心库
     api("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
 }
@@ -153,6 +153,7 @@ ext {
     //是否打开tinker的功能
     tinkerEnabled = true
 
+    //只打包一个apk渠道的时候
     //old apk地址
     tinkerOldApkPath = "${bakPath}/app-release-0708-21-59-49.apk"
     //old apk 混淆文件地址
@@ -160,8 +161,9 @@ ext {
     //old apk R 文件地址
     tinkerApplyResourcePath = "${bakPath}/app-release-0708-21-59-49-R.txt"
 
+    //需要多渠道打包的时候
     //only use for build all flavor, if not, just ignore this field
-    tinkerBuildFlavorDirectory = "${bakPath}/app-1018-17-32-47"
+    tinkerBuildFlavorDirectory = "${bakPath}/app-1127-15-34-25"
 }
 
 def getOldApkPath() {
@@ -393,7 +395,6 @@ if (buildWithTinker()) {
         flavors.add(flavor.name)
     }
     boolean hasFlavors = flavors.size() > 0
-    def date = new Date().format("MMdd-HH-mm-ss")
 /*
     android.applicationVariants.all { variant ->
         variant.outputs.all {
@@ -418,9 +419,9 @@ if (buildWithTinker()) {
                 it.doLast {
                     copy {
                         def fileNamePrefix = "${project.name}-${variant.baseName}"
-                        def newFileNamePrefix = hasFlavors ? "${fileNamePrefix}" : "${fileNamePrefix}-${date}"
+                        def newFileNamePrefix = "${fileNamePrefix}-${rootProject.ext.versionName}"
 
-                        def destPath = hasFlavors ? file("${bakPath}/${project.name}-${date}/${variant.flavorName}") : bakPath
+                        def destPath = hasFlavors ? file("${bakPath}/${project.name}-${rootProject.ext.versionName}/${variant.flavorName}") : bakPath
                         from variant.outputs[0].outputFile
                         into destPath
                         rename { String fileName ->
