@@ -83,7 +83,7 @@ dependencies {
     //数据库                          https://github.com/greenrobot/greenDAO
     api 'org.greenrobot:greendao:3.2.2'
     //腾讯对WebView的优化 https://github.com/Tencent/VasSonic/tree/master/sonic-android
-    api 'com.tencent.sonic:sdk:2.0.0-alpha'
+    api 'com.tencent.sonic:sdk:2.0.0'
     //如果更喜欢腾讯X5内核   https://github.com/Justson/AgentWebX5   https://x5.tencent.com/tbs/guide/sdkInit.html
 //    api 'com.just.agentwebX5:agentwebX5:1.0.0'
     /*
@@ -99,4 +99,6 @@ dependencies {
     api('cn.qqtheme.framework:FilePicker:1.5.5') {//文件选择
         exclude group: 'com.android.support'
     }
+    //Java集合的工具，已经进化为Java开发者的基础工具箱
+    api 'com.google.guava:guava:23.5-android'
 }
