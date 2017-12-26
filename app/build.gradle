@@ -40,6 +40,9 @@ android {
         }
     }
 
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.2'
+    }
     //签名文件配置
     signingConfigs {
         release {
