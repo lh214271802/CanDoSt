@@ -108,6 +108,7 @@
             android:name=".ui.taoke.TaoKeActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.web.WebViewActivity" />
     </application>
 
 </manifest>

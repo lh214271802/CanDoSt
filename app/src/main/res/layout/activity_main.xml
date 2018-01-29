@@ -88,6 +88,15 @@
                     android:padding="@dimen/line24"
                     android:text="tinker信息" />
 
+                <TextView
+                    android:id="@+id/go_to_webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:gravity="center"
+                    android:padding="@dimen/line24"
+                    android:text="原生webview" />
+
                 <ImageView
                     android:id="@+id/image_view"
                     android:layout_width="match_parent"

@@ -23,6 +23,7 @@ import com.lh.ui.common.image.folder.SelectImageActivity;
 import com.lh.ui.common.image.folder.SelectOptions;
 import com.lh.ui.common.image.gallery.ImageGalleryActivity;
 import com.lh.ui.common.video.SelectVideoActivity;
+import com.lh.ui.common.web.CommonWebAcitivity;
 import com.lh.util.StatusBarUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.tencent.tinker.lib.tinker.Tinker;
@@ -138,11 +139,12 @@ public class MainActivity extends BaseRefreshActivity {
         danmuView = findViewById(R.id.danmu_view);
         danmuView.prepare();
 
-        findViewById(R.id.show_tinker_info).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showInfo(mContext);
-            }
+        findViewById(R.id.show_tinker_info).setOnClickListener(v -> showInfo(mContext));
+
+
+        findViewById(R.id.go_to_webview).setOnClickListener(v -> {
+//                WebViewActivity.startActivity(mContext);
+            CommonWebAcitivity.startActivity(mContext,"http://api.viimoo.cn/api_2_0_0_3/html/app/informations.html?uuid=1125901E-B5DE-522C-C68D-A793EB253A27&authsign=","测试",true);
         });
     }
 
