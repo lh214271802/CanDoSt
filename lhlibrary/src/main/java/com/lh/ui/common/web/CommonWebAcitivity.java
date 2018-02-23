@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.FragmentUtils;
 import com.lh.R;
 import com.lh.base.activity.BaseActivity;
@@ -68,7 +67,6 @@ public class CommonWebAcitivity extends BaseActivity implements WebViewContract.
 
     @Override
     protected void initViews() {
-        BarUtils.addMarginTopEqualStatusBarHeight(mCommonToolbar);
         StatusBarUtil.StatusBarLightMode(this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
         FragmentUtils.add(getSupportFragmentManager(), CommonWebFragment.newInstance(getIntent().getStringExtra(WB_URL), true), R.id.container);

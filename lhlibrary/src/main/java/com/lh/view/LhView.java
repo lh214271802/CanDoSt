@@ -43,6 +43,9 @@ public class LhView extends View {
 
     /**
      * 用来检测View组件及其所包含的所有子组件的大小
+     *
+     * @see com.scwang.smartrefresh.layout.header.FalsifyHeader
+     * getDefaultSize 和resolveSize区别
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -58,6 +61,7 @@ public class LhView extends View {
     }
 
     /**
+     * 会在你的View第一次指定大小后调用，在因某些原因改变大小后会再次调用
      * 该组件的大小被改变时回调该方法
      */
     @Override
