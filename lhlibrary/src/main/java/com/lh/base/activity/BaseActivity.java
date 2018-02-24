@@ -3,6 +3,7 @@ package com.lh.base.activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -73,6 +74,27 @@ public abstract class BaseActivity extends RxAppCompatActivity implements BaseCo
         setContentView(contentView = LayoutInflater.from(this).inflate(layoutId, null));
     }
 
+    /**
+     * 为了可以保存额外更多的数据到saved instance state。
+     * 在Activity的生命周期里面存在一个额外的回调函数，
+     * 你必须重写这个函数。该回调函数并没有在前面课程的图片示例中显示。
+     * 这个方法是onSaveInstanceState() ，
+     * 当用户离开Activity时，系统会调用它。
+     * 当系统调用这个函数时，系统会在Activity被异常Destory时传递 Bundle 对象，
+     * 这样我们就可以增加额外的信息到Bundle中并保存到系统中。
+     * 若系统在Activity被Destory之后想重新创建这个Activity实例时，
+     * 之前的Bundle对象会(系统)被传递到你我们activity的onRestoreInstanceState()方法与 onCreate() 方法中。
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+    }
+
     @Override
     public void showError(Throwable e, String errorMsg) {
 
@@ -85,7 +107,7 @@ public abstract class BaseActivity extends RxAppCompatActivity implements BaseCo
 
     @Override
     public void goLogin() {
-        BaseUtils.clearLoginInfo(mContext,true);
+        BaseUtils.clearLoginInfo(mContext, true);
     }
 
     @Override
