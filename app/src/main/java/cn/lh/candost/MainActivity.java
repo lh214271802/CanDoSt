@@ -3,6 +3,7 @@ package cn.lh.candost;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
@@ -47,6 +48,7 @@ public class MainActivity extends BaseRefreshActivity {
     private JZVideoPlayerStandard videoPlayer;
     private DanMuParentView danmuParentView;
     private DanMuView danmuView;
+    private ImageView smile_avd;
 
     @Override
     protected View getToolbarLayout() {
@@ -144,7 +146,14 @@ public class MainActivity extends BaseRefreshActivity {
 
         findViewById(R.id.go_to_webview).setOnClickListener(v -> {
 //                WebViewActivity.startActivity(mContext);
-            CommonWebAcitivity.startActivity(mContext,"http://api.viimoo.cn/api_2_0_0_3/html/app/informations.html?uuid=1125901E-B5DE-522C-C68D-A793EB253A27&authsign=","测试",true);
+            CommonWebAcitivity.startActivity(mContext, "http://api.viimoo.cn/api_2_0_0_3/html/app/informations.html?uuid=1125901E-B5DE-522C-C68D-A793EB253A27&authsign=", "测试", true);
+        });
+
+
+        smile_avd = findViewById(R.id.smile_avd);
+        smile_avd.setOnClickListener(v -> {
+            AnimatedVectorDrawable smileDrawable = (AnimatedVectorDrawable) smile_avd.getDrawable();
+            smileDrawable.start();
         });
     }
 

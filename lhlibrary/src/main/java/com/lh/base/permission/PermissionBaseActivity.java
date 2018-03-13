@@ -89,7 +89,7 @@ public abstract class PermissionBaseActivity extends BaseActivity implements Eas
             DialogHelper.getConfirmDialog(this, "", requestMessage.toString(), "去设置", "取消", false, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    startActivity(IntentUtils.getAppDetailsSettingsIntent(getPackageName()));
+                    startActivity(IntentUtils.getLaunchAppDetailsSettingsIntent(getPackageName()));
                     callBack.onFail(true);
                 }
             }, new DialogInterface.OnClickListener() {

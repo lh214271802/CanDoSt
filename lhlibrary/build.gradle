@@ -23,10 +23,10 @@ dependencies {
     api 'com.peng.library:one-push-umeng:1.2.3'
 
     //json文件快速实现动画效果    https://github.com/airbnb/lottie-android
-    //    api 'com.airbnb.android:lottie:2.2.5'
+        api 'com.airbnb.android:lottie:2.5.0'
     //热修复   https://github.com/Tencent/tinker
     //SVG动画 https://github.com/jaredrummler/AnimatedSvgView
-//    api 'com.jaredrummler:animated-svg-view:1.0.4'
+    api 'com.jaredrummler:animated-svg-view:1.0.5'
     //loading   https://github.com/ldoublem/LoadingView
 //    api 'com.ldoublem.loadingview:loadingviewlib:1.0'
     //流式布局  https://github.com/hongyangAndroid/FlowLayout
@@ -38,7 +38,7 @@ dependencies {
     //refresh If you use the special Header
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
     //android utils     https://github.com/Blankj/AndroidUtilCode
-    api 'com.blankj:utilcode:1.11.1'
+    api 'com.blankj:utilcode:1.13.3'
     //ViewPager的导航条 http://www.jianshu.com/p/f630076d0935
     // https://github.com/LuckyJayce/ViewPagerIndicator#viewpagerindicator
     api 'com.shizhefei:ViewPagerIndicator:1.1.6'

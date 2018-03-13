@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
+    <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+        android:duration="1000"
+        android:propertyName="pathData"
+        android:valueFrom="M12,16c-1.48,0 -2.75,-0.81 -3.45,-2 L6.88,14c0.8,2.05 2.79,3.5 5.12,3.5s4.32,-1.45 5.12,-3.5h-1.67c-0.7,1.19 -1.97,2 -3.45,2"
+        android:valueTo="M12,14 c-2.33,0 -4.32,1.45 -5.12,3.5 L 8.55,17.5 c0.69,-1.19 1.97,-2 3.45,-2s2.75,0.81 3.45,2h1.67c-0.8,-2.05 -2.79,-3.5 -5.12,-3.5"
+        android:valueType="pathType" />
+
+    <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+        android:duration="1000"
+        android:propertyName="pathData"
+        android:valueFrom="M12,14 c-2.33,0 -4.32,1.45 -5.12,3.5 L 8.55,17.5 c0.69,-1.19 1.97,-2 3.45,-2s2.75,0.81 3.45,2h1.67c-0.8,-2.05 -2.79,-3.5 -5.12,-3.5"
+        android:valueTo="M12,16c-1.48,0 -2.75,-0.81 -3.45,-2 L6.88,14c0.8,2.05 2.79,3.5 5.12,3.5s4.32,-1.45 5.12,-3.5h-1.67c-0.7,1.19 -1.97,2 -3.45,2"
+        android:valueType="pathType" />
+
+    <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+        android:duration="1000"
+        android:propertyName="pathData"
+        android:valueFrom="M12,14 c-2.33,0 -4.32,1.45 -5.12,3.5 L 8.55,17.5 c0.69,-1.19 1.97,-2 3.45,-2s2.75,0.81 3.45,2h1.67c-0.8,-2.05 -2.79,-3.5 -5.12,-3.5"
+        android:valueTo="M12,16c-1.48,0 -2.75,-0.81 -3.45,-2 L6.88,14c0.8,2.05 2.79,3.5 5.12,3.5s4.32,-1.45 5.12,-3.5h-1.67c-0.7,1.19 -1.97,2 -3.45,2"
+        android:valueType="pathType" />
+    <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+        android:duration="1000"
+        android:propertyName="pathData"
+        android:valueFrom="M12,16c-1.48,0 -2.75,-0.81 -3.45,-2 L6.88,14c0.8,2.05 2.79,3.5 5.12,3.5s4.32,-1.45 5.12,-3.5h-1.67c-0.7,1.19 -1.97,2 -3.45,2"
+        android:valueTo="M12,14 c-2.33,0 -4.32,1.45 -5.12,3.5 L 8.55,17.5 c0.69,-1.19 1.97,-2 3.45,-2s2.75,0.81 3.45,2h1.67c-0.8,-2.05 -2.79,-3.5 -5.12,-3.5"
+        android:valueType="pathType" />
+
+</set>

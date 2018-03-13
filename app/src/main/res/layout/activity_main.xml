@@ -25,6 +25,15 @@
                 android:orientation="vertical"
                 android:showDividers="middle">
 
+
+                <ImageView
+                    android:id="@+id/smile_avd"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/avd_smile"
+                    android:tint="@color/colorPrimary" />
+
                 <TextView
                     android:id="@+id/select_image"
                     android:layout_width="match_parent"
@@ -119,6 +128,7 @@
                         android:layout_marginTop="30dp" />
 
                 </com.anbetter.danmuku.DanMuParentView>
+
 
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
