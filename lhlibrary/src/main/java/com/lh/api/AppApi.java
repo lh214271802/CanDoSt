@@ -38,7 +38,7 @@ public final class AppApi {
         return okHttpClient;
     }
 
-    public static <T> T getApiService(Class<T> cls) {
+    public synchronized static <T> T getApiService(Class<T> cls) {
         if (BuildConfig.DEBUG) {
             return createApi(cls, BASE_URL_DEBUG);
         }
