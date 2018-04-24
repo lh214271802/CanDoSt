@@ -13,6 +13,7 @@ import android.view.View;
 
 /**
  * Created by fan on 2017/8/29.
+ * 构造函数---->onMeasure-->onSizeChanged-->onLayout-->onDraw--->视图状态改变（用户操作）-->invalidate-->onDraw
  */
 
 public class LhView extends View {
