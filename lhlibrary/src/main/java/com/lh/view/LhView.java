@@ -16,12 +16,13 @@ import android.view.View;
  */
 
 public class LhView extends View {
+
     public LhView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public LhView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public LhView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
