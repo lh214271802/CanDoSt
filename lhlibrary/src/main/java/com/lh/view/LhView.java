@@ -2,14 +2,20 @@ package com.lh.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.blankj.utilcode.util.SizeUtils;
+import com.lh.R;
 
 /**
  * Created by fan on 2017/8/29.
@@ -17,6 +23,9 @@ import android.view.View;
  */
 
 public class LhView extends View {
+
+    private Paint paint;
+    private Paint textPaint;
 
     public LhView(Context context) {
         this(context, null);
@@ -28,11 +37,27 @@ public class LhView extends View {
 
     public LhView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public LhView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        init(context);
+    }
+
+    private void init(Context context) {
+
+        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        textPaint.setTextSize(SizeUtils.sp2px(33));
+
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postInvalidate();
+            }
+        });
     }
 
     /**
@@ -74,9 +99,42 @@ public class LhView extends View {
     /**
      * 该组件将要绘制他的内容时回调该方法进行绘制
      */
+    private int fuck = 0;
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        paint.setColor(ContextCompat.getColor(getContext(), R.color.red));
+        textPaint.setColor(ContextCompat.getColor(getContext(), R.color.green));
+        switch (fuck++ % 4) {
+            case 0:
+                //绘制椭圆
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    canvas.drawOval(0, 0, getWidth(), getHeight() / 2, paint);
+                    canvas.drawText("椭圆", 0, 0, textPaint);
+                }
+                break;
+            case 1:
+                //绘制圆
+                canvas.drawCircle(0, 0, getWidth(), paint);
+                canvas.drawText("圆", 0, 0, textPaint);
+                break;
+            case 2:
+                //绘制圆弧
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    canvas.drawArc(0, 0, 100f, 100f, 0, 90, true, paint);
+//                }
+                canvas.drawArc(new RectF(0, 0, getWidth(), getHeight()), 0, -90, true, paint);
+                canvas.drawText("圆弧", 0, 0, textPaint);
+                break;
+            case 3:
+                paint.setColor(ContextCompat.getColor(getContext(), R.color.yellow));
+                canvas.drawArc(new RectF(0, 0, getWidth(), getHeight()), 0, 360, true, paint);
+                paint.setColor(ContextCompat.getColor(getContext(), R.color.red));
+                canvas.drawArc(new RectF(0, 0, getWidth(), getHeight()), 0, 90, true, paint);
+                canvas.drawText("圆弧啊啊啊", 0, 0, textPaint);
+                break;
+        }
     }
 
     /**
