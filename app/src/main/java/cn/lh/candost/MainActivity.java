@@ -17,6 +17,7 @@ import com.anbetter.danmuku.DanMuParentView;
 import com.anbetter.danmuku.DanMuView;
 import com.anbetter.danmuku.model.DanMuModel;
 import com.anbetter.danmuku.model.utils.DimensionUtil;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.lh.base.activity.BaseRefreshActivity;
@@ -64,7 +65,7 @@ public class MainActivity extends BaseRefreshActivity {
     protected void onResume() {
         super.onResume();
         Utils.setBackground(false);
-
+        LogUtils.e("嘻嘻");
     }
 
     @Override
