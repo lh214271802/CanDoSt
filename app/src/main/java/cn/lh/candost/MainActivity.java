@@ -64,6 +64,7 @@ public class MainActivity extends BaseRefreshActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        /////////////////////////TODO FUFFFFFFFFFFFFFFFFFFFFFFF
         Utils.setBackground(false);
         LogUtils.e("嘻嘻");
     }
