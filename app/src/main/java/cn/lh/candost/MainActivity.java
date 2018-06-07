@@ -50,10 +50,13 @@ public class MainActivity extends BaseRefreshActivity {
     private DanMuParentView danmuParentView;
     private DanMuView danmuView;
     private ImageView smile_avd;
-    //我是testBranch啊 啊啊啊
+
+    //第二个分支修改的地方
+    ///
+    ///
+    ///
     @Override
     protected View getToolbarLayout() {
-        ///你好啊 我是testNewBranches啊
         return getDefaultToolbar("春风又绿江南岸");
     }
 
