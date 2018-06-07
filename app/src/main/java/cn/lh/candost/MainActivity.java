@@ -55,6 +55,7 @@ public class MainActivity extends BaseRefreshActivity {
     ///
     ///
     ///
+
     @Override
     protected View getToolbarLayout() {
         return getDefaultToolbar("春风又绿江南岸");
@@ -65,10 +66,13 @@ public class MainActivity extends BaseRefreshActivity {
         return R.layout.activity_main;
     }
 
+    /**
+     * 我是第一个分支啊
+     * 我也要修改一些东西啊
+     */
     @Override
     protected void onResume() {
         super.onResume();
-        /////////////////////////TODO FUFFFFFFFFFFFFFFFFFFFFFFF
         Utils.setBackground(false);
         LogUtils.e("嘻嘻");
     }
