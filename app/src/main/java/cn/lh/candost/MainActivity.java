@@ -58,6 +58,7 @@ public class MainActivity extends BaseRefreshActivity {
 
     @Override
     protected View getToolbarLayout() {
+        ///你好啊 我是testNewBranches啊
         return getDefaultToolbar("春风又绿江南岸");
     }
 
@@ -73,6 +74,7 @@ public class MainActivity extends BaseRefreshActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        /////////////////////////TODO FUFFFFFFFFFFFFFFFFFFFFFFF
         Utils.setBackground(false);
         LogUtils.e("嘻嘻");
     }
