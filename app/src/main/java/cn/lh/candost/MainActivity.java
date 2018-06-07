@@ -53,8 +53,7 @@ public class MainActivity extends BaseRefreshActivity {
 
     @Override
     protected View getToolbarLayout() {
-        ///你好啊
-        ////////////////////////HHAHAHHAHA
+        ///你好啊 我是testNewBranches啊
         return getDefaultToolbar("春风又绿江南岸");
     }
 
