@@ -50,10 +50,9 @@ public class MainActivity extends BaseRefreshActivity {
     private DanMuParentView danmuParentView;
     private DanMuView danmuView;
     private ImageView smile_avd;
-    //我是testBranch啊 啊啊啊
+
     @Override
     protected View getToolbarLayout() {
-        ///你好啊 我是testNewBranches啊
         return getDefaultToolbar("春风又绿江南岸");
     }
 
@@ -62,10 +61,13 @@ public class MainActivity extends BaseRefreshActivity {
         return R.layout.activity_main;
     }
 
+    /**
+     * 我是第一个分支啊
+     * 我也要修改一些东西啊
+     */
     @Override
     protected void onResume() {
         super.onResume();
-        /////////////////////////TODO FUFFFFFFFFFFFFFFFFFFFFFFF
         Utils.setBackground(false);
         LogUtils.e("嘻嘻");
     }
